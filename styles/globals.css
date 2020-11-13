@@ -14,3 +14,16 @@ a {
 * {
   box-sizing: border-box;
 }
+.navigation{
+  display: flex;
+  justify-content: space-between;
+  padding: 21px 5em;
+  border-bottom: 1px solid gray;
+}
+.navigation .nav-items{
+  display: flex;
+}
+.navigation .nav-items li{
+  list-style: none;
+  padding:0px 10px;
+}

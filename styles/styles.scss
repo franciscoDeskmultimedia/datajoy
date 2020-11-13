@@ -1,0 +1,16 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    padding: 21px 5em;
+    border-bottom: 1px solid gray;
+    .nav-items{
+        display: flex;
+        li{
+            list-style: none;
+            padding:0px 10px;
+        }
+    }
+  }
