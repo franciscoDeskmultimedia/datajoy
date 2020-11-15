@@ -5,9 +5,7 @@ import TwoColTitled from "../components/TwoColTitled/TwoColTitled";
 import TwoColImage from "../components/TwoColImage/TwoColImage"
 
 const PageBuilder = ({ page }) => {
-  //   const pageMap = Object.entries(page);
   const pageBuilder = page.pageBuilder.pageBuilder;
-  console.log(page.pageBuilder);
   return (
     <>
       <Head>
@@ -24,10 +22,11 @@ const PageBuilder = ({ page }) => {
       <Navigation />
       {pageBuilder.map((section, index) => {
         return (
-          <div>
+          <div key={index}>
             {/* IF Hero Section */}
             {section.fieldGroupName ==
             "page_Pagebuilder_PageBuilder_HomeHero" ? (
+              
               <HeroOne
                 title={section.title}
                 subtitle={section.subtitle}
@@ -35,30 +34,40 @@ const PageBuilder = ({ page }) => {
                 imageWidth={section.image.mediaDetails.width}
                 imageHeight={section.image.mediaDetails.height}
               />
+              
             ) : (
               ""
             )}
             {/* IF TWO col Titled */}
             {section.fieldGroupName ==
             "page_Pagebuilder_PageBuilder_TwoUpWithTitle" ? (
-              <TwoColTitled
+              
+              <TwoColTitled 
                 bgColor={section.backgroundColor}
+                textColor={section.textColor}
+                reverse={section.reverse}
                 title={section.title}
-                copy={section.copy}
-                iconSrc={section.icon.mediaItemUrl}
-                iconWidth={section.icon.mediaDetails.width}
-                iconHeight={section.icon.mediaDetails.height}
-                imageSrc={section.image.mediaItemUrl}
-                imageWidth={section.image.mediaDetails.width}
-                imageHeight={section.image.mediaDetails.height}
+                copy={section.textContainer.copy}
+                iconSrc={section.icon ? section.icon.mediaItemUrl : null}
+                iconWidth={section.icon ? section.icon.mediaDetails.width : null}
+                iconHeight={section.icon ? section.icon.mediaDetails.height : null}
+                imageSrc={section.imageContainer.image.mediaItemUrl}
+                imageWidth={section.imageContainer.image.mediaDetails.width}
+                imageHeight={section.imageContainer.image.mediaDetails.height}
+                ctaName={section.textContainer.cta ? section.textContainer.cta[0].cta.title : null }
+                ctaUrl={section.textContainer.cta ? section.textContainer.cta[0].cta.url : null}
+                ctaBgColor={section.textContainer.cta ? section.textContainer.cta[0].buttonColor : null}
+                ctaTextColor={section.textContainer.cta ? section.textContainer.cta[0].textColor : null}
               />
+              
             ) : (
               ""
             )}
             {/* IF TWO col  */}
             {section.fieldGroupName ==
             "page_Pagebuilder_PageBuilder_TwoCol" ? (
-              <TwoColImage
+              
+              <TwoColImage 
                 title={section.textContainer.title}
                 text={section.textContainer.copy}
                 fullImage={section.imageCol.fullImage}
@@ -71,6 +80,7 @@ const PageBuilder = ({ page }) => {
                 ctaName={section.textContainer.cta[0].buttonText.title}
                 ctaUrl={section.textContainer.cta[0].buttonText.url}
               />
+             
             ) : (
               ""
             )}
@@ -105,23 +115,39 @@ export async function getServerSideProps(context) {
                 }
                 ... on Page_Pagebuilder_PageBuilder_TwoUpWithTitle {
                   fieldGroupName
-                  backgroundColor
-                  copy
-                  image {
-                    mediaItemUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
-                  }
-                  title
-                  icon {
-                    mediaItemUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
-                  }
+          title
+          icon {
+            mediaItemUrl
+            mediaDetails {
+              height
+              width
+            }
+          }
+          backgroundColor
+          reverse
+          textColor
+          imageContainer {
+            image {
+              altText
+              mediaItemUrl
+              mediaDetails {
+                height
+                width
+              }
+            }
+          }
+          textContainer {
+            copy
+            title
+            cta {
+              textColor
+              buttonColor
+              cta {
+                url
+                title
+              }
+            }
+          }
                 }
                 ... on Page_Pagebuilder_PageBuilder_TwoCol {
                   fieldGroupName

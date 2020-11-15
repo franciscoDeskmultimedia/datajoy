@@ -5,8 +5,8 @@ const PrimaryButton = (props) => {
     return (
       <Link href={`${props.url}`}>
         <a
-          style={{backgroundColor:props.buttonColor}}
-          className="inline-block px-8 py-4 mt-4 text-base font-light leading-none text-white border rounded-full bg-djGreen bg-djGreen-500 lg:mt-0"
+          style={{backgroundColor:props.buttonColor,color:props.textColor}}
+          className="inline-block px-8 py-4 mt-4 text-base font-light leading-none text-white rounded-full bg-djGreen bg-djGreen-500 lg:mt-0"
         >
           {props.linkName}
         </a>
