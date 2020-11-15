@@ -1,16 +1,42 @@
+@import "~tailwindcss/base";
+@import "~tailwindcss/components";
+
 *{
     font-family: 'Poppins', sans-serif;
 }
-.navigation{
-    display: flex;
-    justify-content: space-between;
-    padding: 21px 5em;
-    border-bottom: 1px solid gray;
-    .nav-items{
-        display: flex;
-        li{
-            list-style: none;
-            padding:0px 10px;
+h1{
+    @apply text-h1;
+    line-height: 110%;
+    letter-spacing: -0.01em;
+}
+h2{
+    @apply text-h2;
+    line-height: 112%;
+    letter-spacing: -0.01em;
+}
+p{
+    font-size: 20px;
+    line-height: 140%;
+}
+.twocolimage{
+    .containImage{
+        min-height: 375px;
+        @screen sm {
+            min-height: 640px;
         }
     }
-  }
+    .fullImage{
+        min-height: 375px;
+        @screen sm {
+            min-height: 640px;
+        }
+        img{
+            @apply object-cover object-center;
+        }
+    }
+}
+
+
+@import "~tailwindcss/utilities";
+
+
