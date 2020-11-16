@@ -1,17 +1,15 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-import Image from "next/image";
-import Link from "next/link";
+import Head from "next/head";
+import Navigation from "../components/Navigation/Navigation";
 import HeroOne from "../components/Heros/HeroOne";
 import TwoColTitled from "../components/TwoColTitled/TwoColTitled";
-import TwoColImage from "../components/TwoColImage/TwoColImage";
+import TwoColImage from "../components/TwoColImage/TwoColImage"
 
-import Navigation from "../components/Navigation/Navigation";
-
-export default function Home() {
+export default function Home({page}) {
+  const pageBuilder = page.pageBuilder.pageBuilder;
   return (
-    <div>
+    <>
       <Head>
         <title>Datajoy</title>
         <link rel="icon" href="/datajoy-favicon.png" />
@@ -23,61 +21,209 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <div>
-        <Navigation />
-      </div>
-      <main>
-        <HeroOne
-          title="Grow ARR faster"
-          subtitle="Start optimizing your SaaS revenue funnel in days."
-          imageSrc="/home_IMG_HERO.jpg"
-          imageWidth="1110"
-          imageHeight="540"
-        />
-        <TwoColTitled
-          title="Optimize your revenue funnel"
-          copy="The #1 way to increase the value of your SaaS business is by growing ARR faster, more efficiently and repeatedly. Datajoy optimizes your revenue funnel by making it simple to identify bottlenecks, anomalies and opportunities using our purpose-built ML for SaaS. This gives you the insights to increase LTV toCAC ration, grow net new revenue retention and maximize gross margin."
-          iconSrc="/orangeTriangle.png"
-          iconWidth="65"
-          iconHeight="54"
-          imageSrc="/home_IMG_01.jpg"
-          imageWidth="445"
-          imageHeight="445"
-        />
-        <TwoColImage
-          title="Single source of truth for end to end SaaS metrics"
-          text="Datajoy joins and cleans data that exists in your marketing, sales, product, success and financial data silos to create one high speed and accurate data warehouse optimized for exploration and fast queries. Since we map all upstream drivers we can tell you why KPIs are changing so you can get to the root cause and make course corrections."
-          imageSrc="/home_IMG_02.png"
-          reverse={false}
-        />
-        <TwoColImage
-          title="Answering the why"
-          text="Datajoy utilizes AI to map the relationship of all your KPIs and their key downstream and upstream drivers so you know why KPIs are changing so you can get to the root cause and make course corrections faster."
-          fullImage={true}
-          imageSrc="/home_IMG_03.jpg"
-          reverse={true}
-        />
-        <TwoColImage
-          title="Anomaly detection"
-          text="We identify anomalies in metrics that have high influence in correlation and magnitude to the key metrics you care about. Let’s face it, things break, things change and behaviors evolve. Be alerted of these key events so you can make informed changes faster so you can blow out the quarter."
-          imageSrc="/home_IMG_04.png"
-          reverse={false}
-        />
-        <Link href="/[slug]" as="sample-page">
-          <a>Sample Page</a>
-        </Link>
-      </main>
+      <Navigation />
+      {pageBuilder.map((section, index) => {
+        return (
+          <div key={index}>
+            {/* IF Hero Section */}
+            {section.fieldGroupName ==
+            "page_Pagebuilder_PageBuilder_HomeHero" ? (
+              
+              <HeroOne
+                title={section.title}
+                subtitle={section.subtitle}
+                imageSrc={section.image.mediaItemUrl}
+                imageWidth={section.image.mediaDetails.width}
+                imageHeight={section.image.mediaDetails.height}
+              />
+              
+            ) : (
+              ""
+            )}
+            {/* IF TWO col Titled */}
+            {section.fieldGroupName ==
+            "page_Pagebuilder_PageBuilder_TwoUpWithTitle" ? (
+              
+              <TwoColTitled 
+                bgColor={section.backgroundColor}
+                textColor={section.textColor}
+                reverse={section.reverse}
+                title={section.title}
+                copy={section.textContainer.copy}
+                iconSrc={section.icon ? section.icon.mediaItemUrl : null}
+                iconWidth={section.icon ? section.icon.mediaDetails.width : null}
+                iconHeight={section.icon ? section.icon.mediaDetails.height : null}
+                imageSrc={section.imageContainer.image.mediaItemUrl}
+                imageWidth={section.imageContainer.image.mediaDetails.width}
+                imageHeight={section.imageContainer.image.mediaDetails.height}
+                ctaName={section.textContainer.cta ? section.textContainer.cta[0].cta.title : null }
+                ctaUrl={section.textContainer.cta ? section.textContainer.cta[0].cta.url : null}
+                ctaBgColor={section.textContainer.cta ? section.textContainer.cta[0].buttonColor : null}
+                ctaTextColor={section.textContainer.cta ? section.textContainer.cta[0].textColor : null}
+              />
+              
+            ) : (
+              ""
+            )}
+            {/* IF TWO col  */}
+            {section.fieldGroupName ==
+            "page_Pagebuilder_PageBuilder_TwoCol" ? (
+              
+              <TwoColImage 
+                title={section.textContainer.title}
+                text={section.textContainer.copy}
+                fullImage={section.imageCol.fullImage}
+                imageSrc={section.imageCol.image.mediaItemUrl}
+                imageWidth={section.imageCol.image.mediaDetails.width}
+                imageHeight={section.imageCol.image.mediaDetails.height}
+                backgroundColor={section.imageCol.backgroundColor}
+                reverse={section.reverse}
+                ctaBgColor={section.textContainer.cta[0].backgroundColor}
+                ctaName={section.textContainer.cta[0].buttonText.title}
+                ctaUrl={section.textContainer.cta[0].buttonText.url}
+              />
+             
+            ) : (
+              ""
+            )}
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+          </div>
+        );
+      })}
+    </>
   );
 }
+
+export async function getServerSideProps(context) {
+  const query = `
+    query MyQuery {
+        pageBy(uri: "home") {
+            title
+            pageBuilder {
+              pageBuilder {
+                ... on Page_Pagebuilder_PageBuilder_HomeHero {
+                  subtitle
+                  title
+                  image {
+                    mediaItemUrl
+                    mediaDetails {
+                      height
+                      width
+                    }
+                  }
+                  fieldGroupName
+                }
+                ... on Page_Pagebuilder_PageBuilder_TwoUpWithTitle {
+                  fieldGroupName
+          title
+          icon {
+            mediaItemUrl
+            mediaDetails {
+              height
+              width
+            }
+          }
+          backgroundColor
+          reverse
+          textColor
+          imageContainer {
+            image {
+              altText
+              mediaItemUrl
+              mediaDetails {
+                height
+                width
+              }
+            }
+          }
+          textContainer {
+            copy
+            title
+            cta {
+              textColor
+              buttonColor
+              cta {
+                url
+                title
+              }
+            }
+          }
+                }
+                ... on Page_Pagebuilder_PageBuilder_TwoCol {
+                  fieldGroupName
+                  reverse
+                  imageCol {
+                    fullImage
+                    backgroundColor
+                    image {
+                      mediaItemUrl
+                      mediaDetails {
+                        height
+                        width
+                      }
+                    }
+                  }
+                  textContainer {
+                    title
+                    copy
+                    cta {
+                      backgroundColor
+                      buttonText {
+                        title
+                        url
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+      }
+    `;
+  const opts = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query }),
+  };
+  const res = await fetch("https://dev-datajoy.pantheonsite.io/graphql", opts);
+  const response = await res.json();
+  const page = await response.data.pageBy;
+  // const page = 'test'
+  return {
+    props: {
+      page,
+    }, // will be passed to the page component as props
+  };
+}
+// export async function getStaticPaths() {
+//     return {
+//         paths: [
+//             { params: { slug: '1' } },
+//             { params: { slug: '2' } }
+//         ],
+//       fallback: true  // See the "fallback" section below
+//     };
+//   }
+// export async function getStaticProps({params}) {
+//     const query = `
+//     query {
+//         postBy(slug: "${params.slug}") {
+//           title
+//         }
+//       }
+//     `;
+//     const opts = {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ query })
+//       };
+//     const res = await fetch('https://dev-datajoy.pantheonsite.io/graphql',opts)
+//     const response = await res.json()
+//     const page = await response.data.postBy;
+//     // const page = 'test'
+//     return {
+//       props: {
+//           page
+//       }, // will be passed to the page component as props
+//     }
+//   }
