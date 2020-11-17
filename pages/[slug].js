@@ -185,11 +185,8 @@ export async function getServerSideProps(context) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query }),
   };
-  if(context.preview){
-    const res = await fetch(`https://dev-datajoy.pantheonsite.io/preview`, opts);
-  }else{
-    const res = await fetch("https://dev-datajoy.pantheonsite.io/graphql", opts);
-  }
+  
+  const res = await fetch("https://dev-datajoy.pantheonsite.io/graphql", opts);
   
   const response = await res.json();
   const page = await response.data.pageBy;
