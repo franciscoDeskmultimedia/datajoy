@@ -3,8 +3,10 @@ import Navigation from "../components/Navigation/Navigation";
 import HeroOne from "../components/Heros/HeroOne";
 import TwoColTitled from "../components/TwoColTitled/TwoColTitled";
 import TwoColImage from "../components/TwoColImage/TwoColImage"
+import {getPageBuilder} from '../lib/api'
 
 const PageBuilder = ({ page }) => {
+  console.log(page)
   const pageBuilder = page.pageBuilder.pageBuilder;
   return (
     <>
@@ -76,9 +78,9 @@ const PageBuilder = ({ page }) => {
                 imageHeight={section.imageCol.image.mediaDetails.height}
                 backgroundColor={section.imageCol.backgroundColor}
                 reverse={section.reverse}
-                ctaBgColor={section.textContainer.cta[0].backgroundColor}
-                ctaName={section.textContainer.cta[0].buttonText.title}
-                ctaUrl={section.textContainer.cta[0].buttonText.url}
+                ctaBgColor={section.textContainer.cta ? section.textContainer.cta[0].backgroundColor : null}
+                ctaName={section.textContainer.cta ? section.textContainer.cta[0].buttonText.title : null}
+                ctaUrl={section.textContainer.cta ? section.textContainer.cta[0].buttonText.url : null}
               />
              
             ) : (
@@ -95,137 +97,8 @@ const PageBuilder = ({ page }) => {
 export default PageBuilder;
 
 export async function getServerSideProps(context) {
-  const query = `
-    query MyQuery {
-        pageBy(uri: "${context.params.slug}") {
-            title
-            pageBuilder {
-              pageBuilder {
-                ... on Page_Pagebuilder_PageBuilder_HomeHero {
-                  subtitle
-                  title
-                  image {
-                    mediaItemUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
-                  }
-                  fieldGroupName
-                }
-                ... on Page_Pagebuilder_PageBuilder_TwoUpWithTitle {
-                  fieldGroupName
-          title
-          icon {
-            mediaItemUrl
-            mediaDetails {
-              height
-              width
-            }
-          }
-          backgroundColor
-          reverse
-          textColor
-          imageContainer {
-            image {
-              altText
-              mediaItemUrl
-              mediaDetails {
-                height
-                width
-              }
-            }
-          }
-          textContainer {
-            copy
-            title
-            cta {
-              textColor
-              buttonColor
-              cta {
-                url
-                title
-              }
-            }
-          }
-                }
-                ... on Page_Pagebuilder_PageBuilder_TwoCol {
-                  fieldGroupName
-                  reverse
-                  imageCol {
-                    fullImage
-                    backgroundColor
-                    image {
-                      mediaItemUrl
-                      mediaDetails {
-                        height
-                        width
-                      }
-                    }
-                  }
-                  textContainer {
-                    title
-                    copy
-                    cta {
-                      backgroundColor
-                      buttonText {
-                        title
-                        url
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-      }
-    `;
-  const opts = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ query }),
-  };
-  
-  const res = await fetch("https://dev-datajoy.pantheonsite.io/graphql", opts);
-  
-  const response = await res.json();
-  const page = await response.data.pageBy;
-  // const page = 'test'
+  const page = await getPageBuilder(context.params.slug);
   return {
-    props: {
-      page,
-    }, // will be passed to the page component as props
-  };
+    props: { page },
+  }
 }
-// export async function getStaticPaths() {
-//     return {
-//         paths: [
-//             { params: { slug: '1' } },
-//             { params: { slug: '2' } }
-//         ],
-//       fallback: true  // See the "fallback" section below
-//     };
-//   }
-// export async function getStaticProps({params}) {
-//     const query = `
-//     query {
-//         postBy(slug: "${params.slug}") {
-//           title
-//         }
-//       }
-//     `;
-//     const opts = {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ query })
-//       };
-//     const res = await fetch('https://dev-datajoy.pantheonsite.io/graphql',opts)
-//     const response = await res.json()
-//     const page = await response.data.postBy;
-//     // const page = 'test'
-//     return {
-//       props: {
-//           page
-//       }, // will be passed to the page component as props
-//     }
-//   }
