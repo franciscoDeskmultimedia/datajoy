@@ -19,5 +19,5 @@ export default async (req, res) => {
 
   // Redirect to the path from the fetched post
   // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
-  res.redirect(`https://datajoy.vercel.app/preview?secret=dataJ0yW3b&slug=${req.query.slug}`)
+  res.redirect(`https://datajoy.vercel.app/${req.query.slug}`)
 }
