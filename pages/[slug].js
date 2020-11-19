@@ -6,7 +6,7 @@ import TwoColImage from "../components/TwoColImage/TwoColImage"
 import {getPageBuilder} from '../lib/api'
 
 const PageBuilder = ({ page, draftData, previewData }) => {
-  // console.log(page);
+  console.log(page);
   // console.log('dataDraft' + draftData);
   // console.log('preview data : ' + previewData.post.id + ' slug : ' + previewData.post.slug + ' post status: ' + previewData.post.status )
   const pageBuilder = page ? page.pageBy.pageBuilder.pageBuilder : '';
@@ -24,7 +24,7 @@ const PageBuilder = ({ page, draftData, previewData }) => {
         />
       </Head>
       <Navigation />
-      { draftData ?
+      { page.pageBy.status == 'publish' ||  draftData == true ?
       
       pageBuilder.map((section, index) => {
         return (
