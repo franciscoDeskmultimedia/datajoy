@@ -5,10 +5,11 @@ import TwoColTitled from "../components/TwoColTitled/TwoColTitled";
 import TwoColImage from "../components/TwoColImage/TwoColImage"
 import {getPageBuilder} from '../lib/api'
 
-const PageBuilder = ({ page, draftData }) => {
-  console.log(page);
-  console.log('dataDraft' + draftData);
-  const pageBuilder = page.pageBy.pageBuilder.pageBuilder;
+const PageBuilder = ({ page, draftData, previewData }) => {
+  // console.log(page);
+  // console.log('dataDraft' + draftData);
+  // console.log('preview data : ' + previewData.post.id + ' slug : ' + previewData.post.slug + ' post status: ' + previewData.post.status )
+  const pageBuilder = page ? page.pageBy.pageBuilder.pageBuilder : '';
   return (
     <>
       <Head>
@@ -23,7 +24,9 @@ const PageBuilder = ({ page, draftData }) => {
         />
       </Head>
       <Navigation />
-      {pageBuilder.map((section, index) => {
+      { draftData ?
+      
+      pageBuilder.map((section, index) => {
         return (
           <div key={index}>
             {/* IF Hero Section */}
@@ -90,7 +93,9 @@ const PageBuilder = ({ page, draftData }) => {
 
           </div>
         );
-      })}
+      })
+      : (<h1>Page under construction</h1>)}
+      {}
     </>
   );
 };
@@ -100,10 +105,12 @@ export default PageBuilder;
 export async function getServerSideProps(context) {
   const page = await getPageBuilder(context.params.slug);
   const draftData = context.preview;
+  const previewData = context.previewData;
   return {
     props: { 
       page,
-      draftData
+      draftData,
+      previewData
      },
   }
 }
