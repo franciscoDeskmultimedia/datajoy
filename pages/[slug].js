@@ -5,9 +5,10 @@ import TwoColTitled from "../components/TwoColTitled/TwoColTitled";
 import TwoColImage from "../components/TwoColImage/TwoColImage"
 import {getPageBuilder} from '../lib/api'
 
-const PageBuilder = ({ page }) => {
-  console.log(page)
-  const pageBuilder = page.pageBuilder.pageBuilder;
+const PageBuilder = ({ page, draftData }) => {
+  console.log(page);
+  console.log('dataDraft' + draftData);
+  const pageBuilder = page.pageBy.pageBuilder.pageBuilder;
   return (
     <>
       <Head>
@@ -98,7 +99,11 @@ export default PageBuilder;
 
 export async function getServerSideProps(context) {
   const page = await getPageBuilder(context.params.slug);
+  const draftData = context.preview;
   return {
-    props: { page },
+    props: { 
+      page,
+      draftData
+     },
   }
 }
