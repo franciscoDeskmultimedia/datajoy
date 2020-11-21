@@ -27,6 +27,7 @@ export default function Home({page}) {
       </Head>
       <Navigation />
       <PageBuilder page={pageBuilder}/>
+      <p>test</p>
       <Footer/> 
     </>
   );
