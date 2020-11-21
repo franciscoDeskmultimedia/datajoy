@@ -14,7 +14,7 @@ const EyebrowTitle = (props) => {
         <div className="flex flex-wrap py-20">
           <p className="w-full pt-10 pr-4 eyebrow sm:w-1/12">{props.eyebrow}</p>
           <div className="sm:11/12">
-            <Link href={props.url.replace(process.env.WORDPRESS_BASE_URL,'')}>
+            <Link href={props.url.replace(process.env.WORDPRESS_BASE_URL, "")}>
               <a className="flex flex-wrap items-end ">
                 <h1 className="w-full sm:w-auto">
                   {props.title}
@@ -35,22 +35,33 @@ const EyebrowTitle = (props) => {
               </a>
             </Link>
             {props.content ? (
-            <div className="w-full mt-10 ">
-              <div
-                className="w-full px-10 textContent sm:px-0"
-                dangerouslySetInnerHTML={{ __html: props.content }}
-              ></div>
-            </div>
-          ) : (
-            ""
-          )}
+              <div className="w-full mt-10 ">
+                <div
+                  className="w-full px-10 textContent sm:px-0"
+                  dangerouslySetInnerHTML={{ __html: props.content }}
+                ></div>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
-          
         </div>
       ) : (
-        <div className="flex flex-wrap items-end py-20">
-          <p className="w-full pb-3 pr-4 eyebrow sm:w-auto">{props.eyebrow}</p>
-          <h1 className="w-full sm:w-auto">{props.title}</h1>
+        <div className="flex flex-wrap py-20">
+          <p className="w-full pt-10 pr-4 eyebrow sm:w-1/12">{props.eyebrow}</p>
+          <div className="sm:11/12">
+            <h1 className="w-full sm:w-auto">{props.title}</h1>
+            {props.content ? (
+              <div className="w-full mt-10 ">
+                <div
+                  className="w-full px-10 textContent sm:px-0"
+                  dangerouslySetInnerHTML={{ __html: props.content }}
+                ></div>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       )}
     </section>

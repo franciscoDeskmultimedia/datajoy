@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation/Navigation";
 
 import {getPageBuilder} from '../lib/api'
 import PageBuilder from '../components/PageBuilder/PageBuilder'
+import Footer from '../components/Footer/Footer'
 
 const PageBuilderContent = ({ page, draftData, previewData }) => {
   console.log(page);
@@ -27,7 +28,7 @@ const PageBuilderContent = ({ page, draftData, previewData }) => {
        <PageBuilder page={pageBuilder}/>
       
       : (<h1>Page under construction</h1>)}
-      
+      <Footer></Footer>
     </>
   );
 };
