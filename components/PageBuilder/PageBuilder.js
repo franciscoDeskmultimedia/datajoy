@@ -107,7 +107,7 @@ const PageBuilder = (props) => {
                     eyebrow={section.eyebrow}
                     title={section.title}
                     linkedTitle={section.likedTitle}
-                    url={section.url.url}
+                    url={section.url ? section.url.url : null}
                     bgColor={section.backgroundColor}
                     textColor={section.textColor}
                     content={section.content}

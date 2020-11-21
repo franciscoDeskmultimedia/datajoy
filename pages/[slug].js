@@ -27,7 +27,7 @@ const PageBuilderContent = ({ page, draftData, previewData }) => {
        <PageBuilder page={pageBuilder}/>
       
       : (<h1>Page under construction</h1>)}
-      {}
+      
     </>
   );
 };
