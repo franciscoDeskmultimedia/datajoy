@@ -28,12 +28,13 @@ const Navigation = () => {
         </div>
         <div className="flex-grow hidden w-full lg:flex lg:items-center lg:w-auto">
           <div className="flex justify-end text-sm lg:flex-grow">
-            <a
-              href="#responsive-header"
-              className="block mt-4 mr-4 text-black lg:inline-block lg:mt-0 hover:text-gray"
-            >
-              Our story
-            </a>
+            <Link href="/about">
+              <a
+                className="block mt-4 mr-4 text-black lg:inline-block lg:mt-0 hover:text-gray"
+              >
+                Our story
+              </a>
+            </Link>
             <a
               href="#responsive-header"
               className="block mt-4 mr-4 text-black lg:inline-block lg:mt-0 hover:text-gray"
