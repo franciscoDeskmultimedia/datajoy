@@ -4,7 +4,7 @@ import PrimaryButton from '../Buttons/PrimaryButton';
 
 const Navigation = () => {
     return (
-      <nav className="flex flex-wrap items-center justify-between h-20 px-32 border-b border-black border-solid bg-white-500">
+      <nav className="flex flex-wrap items-center justify-between h-20 px-10 border-b border-black border-solid sm:px-32 bg-white-500">
         <div className="flex items-center flex-shrink-0 mr-6 text-white">
           <Link href='/'>
             
@@ -26,7 +26,7 @@ const Navigation = () => {
             </svg>
           </button>
         </div>
-        <div className="flex-grow block w-full lg:flex lg:items-center lg:w-auto">
+        <div className="flex-grow hidden w-full lg:flex lg:items-center lg:w-auto">
           <div className="flex justify-end text-sm lg:flex-grow">
             <a
               href="#responsive-header"
@@ -42,7 +42,15 @@ const Navigation = () => {
             </a>
           </div>
           <div>
-            <PrimaryButton linkName='Get beta' url='#'/>
+            {/* <PrimaryButton linkName='Get beta' url='#'/> */}
+            <Link href={`#`}>
+              <a
+                style={{ backgroundColor: '#0E4830', color: 'white' }}
+                className={`inline-block px-8 py-4 mt-4  text-base font-light leading-none text-center text-white rounded-full bg-djGreen bg-djGreen-500 lg:mt-0`}
+              >
+                Get beta
+              </a>
+            </Link>
           </div>
         </div>
       </nav>

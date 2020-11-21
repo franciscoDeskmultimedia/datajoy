@@ -5,18 +5,38 @@
     font-family: 'Poppins', sans-serif;
 }
 h1{
-    @apply text-h1;
+    @apply text-5xl;
     line-height: 110%;
     letter-spacing: -0.01em;
 }
 h2{
-    @apply text-h2;
+    @apply text-3.5xl;
     line-height: 112%;
     letter-spacing: -0.01em;
 }
 p{
+    @apply font-light;
     font-size: 20px;
     line-height: 140%;
+    letter-spacing: -0.01em;
+}
+@screen sm{
+    h1{
+        @apply text-7xl;
+        line-height: 110%;
+        letter-spacing: -0.01em;
+    }
+    h2{
+        @apply text-5xl;
+        line-height: 112%;
+        letter-spacing: -0.01em;
+    }
+    p{
+        @apply font-light;
+        font-size: 20px;
+        line-height: 140%;
+        letter-spacing: normal;
+    }
 }
 .twocolimage{
     .containImage{
@@ -32,6 +52,28 @@ p{
         }
         img{
             @apply object-cover object-center;
+        }
+    }
+}
+.eyebrow{
+    @apply text-xl;
+    min-width: 120px;
+}
+.fullImageContainer{
+    height: 640px;
+}
+ol {
+    counter-reset: my-awesome-counter;
+    li{
+        counter-increment: my-awesome-counter;
+        @apply text-5xl relative mb-16;
+        &:before{
+            content: "0" counter(my-awesome-counter) ;
+            @apply text-xl absolute;
+            content: "0" counter(my-awesome-counter);
+            position: absolute;
+            left: -34px;
+            bottom: 15px;
         }
     }
 }

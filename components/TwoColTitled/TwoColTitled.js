@@ -4,7 +4,7 @@ import PrimaryButton from "../Buttons/PrimaryButton";
 const TwoColTitled = (props) => {
   return (
     <section
-      style={{ backgroundColor: props.bgColor }}
+      style={{ backgroundColor: props.bgColor ? props.bgColor : '' }}
       className="flex px-4 pt-20 pb-40 bg-black md:px-32"
     >
       {props.iconSrc ? (

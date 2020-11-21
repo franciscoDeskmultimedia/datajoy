@@ -37,7 +37,9 @@ module.exports = {
       },
       fontSize: {
         'h1': '80px',
-        'h2': '48px'
+        'h2': '48px',
+        '7xl': '5rem',
+        '3.5xl': '2rem'
       },
     },
   },
