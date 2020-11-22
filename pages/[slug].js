@@ -6,7 +6,7 @@ import PageBuilder from '../components/PageBuilder/PageBuilder'
 import Footer from '../components/Footer/Footer'
 
 const PageBuilderContent = ({ page, draftData, previewData }) => {
-  console.log(page);
+
   // console.log('dataDraft' + draftData);
   // console.log('preview data : ' + previewData.post.id + ' slug : ' + previewData.post.slug + ' post status: ' + previewData.post.status )
   const pageBuilder = page ? page.pageBy.pageBuilder.pageBuilder : '';

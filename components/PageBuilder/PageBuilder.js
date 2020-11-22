@@ -4,6 +4,7 @@ import TwoColImage from '../TwoColImage/TwoColImage';
 import EyeBrowHero from "../Heros/EyeBrowHero";
 import FullImage from '../FullImage/FullImage'
 import EyebrowTitle from '../EyebrowTitle/EyebrowTitle';
+import TwoColPost from '../TwoUpPost/TwoUpPost'
 const PageBuilder = (props) => {
     const pageBuilder = props.page;
     return (
@@ -111,6 +112,22 @@ const PageBuilder = (props) => {
                     bgColor={section.backgroundColor}
                     textColor={section.textColor}
                     content={section.content}
+                  />
+                 
+                ) : (
+                  ""
+                )}
+                {/* IF TwoColPost  */}
+                {section.fieldGroupName ==
+                "page_Pagebuilder_PageBuilder_TwoUpPost" ? (
+                  
+                  <TwoColPost
+                    category={section.post.categories.nodes[0].name}
+                    image={section.post.featuredImage.node.mediaItemUrl}
+                    title={section.post.title}
+                    date={section.post.date}
+                    author={section.post.author.node.firstName + ' ' + section.post.author.node.lastName}
+                    slug={section.post.slug}
                   />
                  
                 ) : (
