@@ -42,15 +42,15 @@ const BlogPost = ({ post, draftData }) => {
       </Head>
       <Navigation />
       <div className="pt-20 ">
-        <h1 className='max-w-6xl px-4 sm:px-32'>{thePost.title}</h1>
-        <div className='px-4 mt-10 mb-12 sm:px-32'>
+        <h1 className="max-w-6xl px-4 sm:px-32">{thePost.title}</h1>
+        <div className="px-4 mt-10 mb-12 sm:px-32">
           <div className="flex justify-between">
-            <div className='flex'>
-              <p className='mr-4 text-sm'>{thePost.categories.nodes[0].name}</p>
-              <p className='text-sm'>{thePost.readTime.readTime}</p>
+            <div className="flex">
+              <p className="mr-4 text-sm">{thePost.categories.nodes[0].name}</p>
+              <p className="text-sm">{thePost.readTime.readTime}</p>
             </div>
             <div>
-              <p className='text-sm'>
+              <p className="text-sm">
                 {thePost.author.node.firstName +
                   " " +
                   thePost.author.node.lastName}
@@ -59,12 +59,39 @@ const BlogPost = ({ post, draftData }) => {
             </div>
           </div>
         </div>
-        <div className='w-full px-4 border-t border-b border-black sm:px-32'>
-            <div className='max-w-6xl'>
-            <Image  src={thePost.featuredImage.node.mediaItemUrl} width={thePost.featuredImage.node.mediaDetails.width}  height={thePost.featuredImage.node.mediaDetails.height} layout='responsive'/>
-            </div>
+        <div className="w-full px-0 border-t border-b border-black sm:px-32">
+          <div className="max-w-6xl">
+            <Image
+              src={thePost.featuredImage.node.mediaItemUrl}
+              width={thePost.featuredImage.node.mediaDetails.width}
+              height={thePost.featuredImage.node.mediaDetails.height}
+              layout="responsive"
+            />
+          </div>
         </div>
       </div>
+      <div className="flex flex-wrap px-4 pt-40 pb-40 sm:px-32 postContent">
+        <div className="w-full sm:w-1/3 shareLinks">
+          <h3>{thePost.title}</h3>
+          <p className='mt-5'>{transformDate(thePost.date)}</p>
+        </div>
+        <div
+          className="w-full sm:w-2/3"
+          dangerouslySetInnerHTML={{
+            __html: thePost.blogBuilder.blogBuilder[0].content,
+          }}
+        ></div>
+      </div>
+      <div className="pb-40 text-white slider articles bg-djGreen-500">
+          <div className="flex items-end justify-between px-4 py-8 border-b border-white sm:px-32">
+            <h2 className='leading-none'>Related articles </h2>
+            {/* <p className='text-right'>Get the latest on tech, business and entrepreneurship</p> */}
+          </div>
+          <div className='px-4 pt-20 sm:px-32'>
+            <TitledSlider></TitledSlider>
+          </div>
+          
+        </div>
 
       <Footer></Footer>
     </>
