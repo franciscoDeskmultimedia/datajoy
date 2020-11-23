@@ -8,7 +8,7 @@ const Navigation = () => {
       <div className="flex items-center flex-shrink-0 mr-6 text-white">
         <Link href="/">
           {/* <Image layout='fixed' width='111' height='32' src='/datajoy-logo.png'/> */}
-          <Image className='cursor-pointer ' src={"/datajoy-logo.png"} width="111" height="32"></Image>
+          <image className='cursor-pointer ' src={"/datajoy-logo.png"} width="111" height="32"></image>
         </Link>
       </div>
       <div className="block lg:hidden">
