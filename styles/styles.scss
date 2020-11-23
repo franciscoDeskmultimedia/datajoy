@@ -113,6 +113,21 @@ ol {
 .slider-two{
     height: 350px;
 }
+.nav-overlay {
+    height: calc(100vh - 80px);
+    left: 0;
+    top: 80px;
+    background: black;
+    color: white;
+    z-index: 9999;
+}
+.navActive{
+    background-color: black!important;
+    border-color: white!important;
+    color: white;
+    transition:1s;
+    border-bottom:1px solid white!important;
+}
 
 @import "~tailwindcss/utilities";
 
