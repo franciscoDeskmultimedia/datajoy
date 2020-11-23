@@ -35,35 +35,35 @@ const PageBuilderContent = ({ page, draftData, previewData }) => {
 
 export default PageBuilderContent;
 
-// export async function getServerSideProps(context) {
-//   const page = await getPageBuilder(context.params.slug);
-//   const draftData = context.preview ? context.preview : null ;
-//   // const previewData = context.previewData;
-//   return {
-//     props: { 
-//       page,
-//       draftData,
-//       // previewData
-//      },
-//   }
-// }
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const page = await getPageBuilder(context.params.slug);
   const draftData = context.preview ? context.preview : null ;
-
+  // const previewData = context.previewData;
   return {
-    props: {
+    props: { 
       page,
       draftData,
-    },
+      // previewData
+     },
   }
 }
+// export async function getStaticProps(context) {
+//   const page = await getPageBuilder(context.params.slug);
+//   const draftData = context.preview ? context.preview : null ;
 
-export async function getStaticPaths() {
-  const allPosts = await getAllPagesWithSlug()
+//   return {
+//     props: {
+//       page,
+//       draftData,
+//     },
+//   }
+// }
 
-  return {
-    paths: allPosts.edges.map(({ node }) => `/${node.slug}`) || [],
-    fallback: false,
-  }
-}
+// export async function getStaticPaths() {
+//   const allPosts = await getAllPagesWithSlug()
+
+//   return {
+//     paths: allPosts.edges.map(({ node }) => `/${node.slug}`) || [],
+//     fallback: false,
+//   }
+// }
