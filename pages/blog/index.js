@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TitledSlider from "../../components/TitledSlider/TitledSlider";
 
-import { getPageBuilder, getAllPosts, getAllCategories } from "../../lib/api";
+import { getPageBuilder, getAllPosts, getAllCategories,getAllPagesWithSlug } from "../../lib/api";
 import PageBuilder from "../../components/PageBuilder/PageBuilder";
 import Footer from "../../components/Footer/Footer";
 
@@ -287,19 +287,37 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
 
 export default Blog;
 
-export async function getServerSideProps(context) {
-  const page = await getPageBuilder("blog");
-  const posts = await getAllPosts();
-  const cat = await getAllCategories();
-  const draftData = context.preview ? context.preview : null;
-  // const previewData = context.previewData;
+// export async function getServerSideProps(context) {
+//   const page = await getPageBuilder("blog");
+//   const posts = await getAllPosts();
+//   const cat = await getAllCategories();
+//   const draftData = context.preview ? context.preview : null;
+//   // const previewData = context.previewData;
+//   return {
+//     props: {
+//       page,
+//       posts,
+//       cat,
+//       draftData,
+//       // previewData
+//     },
+//   };
+// }
+
+export async function getStaticProps(context) {
+    const page = await getPageBuilder("blog");
+    const posts = await getAllPosts();
+    const cat = await getAllCategories();
+    const draftData = context.preview ? context.preview : null;
+
   return {
     props: {
       page,
       posts,
       cat,
-      draftData,
-      // previewData
+      draftData
     },
-  };
+  }
 }
+
+

@@ -54,7 +54,7 @@ const EyebrowTitle = (props) => {
             {props.content ? (
               <div className="w-full mt-10 ">
                 <div
-                  className="w-full px-10 textContent sm:px-0"
+                  className="w-full pl-10 textContent sm:pl-0"
                   dangerouslySetInnerHTML={{ __html: props.content }}
                 ></div>
               </div>

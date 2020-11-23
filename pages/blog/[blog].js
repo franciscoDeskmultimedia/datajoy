@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TitledSlider from "../../components/TitledSlider/TitledSlider";
 
-import { getSinglePost } from "../../lib/api";
+import { getSinglePost, getAllPostsWithSlug } from "../../lib/api";
 import Footer from "../../components/Footer/Footer";
 import { AnimatePresence, motion } from "framer-motion";
 const BlogPost = ({ post, draftData }) => {
@@ -62,9 +62,9 @@ const BlogPost = ({ post, draftData }) => {
         <div className="w-full px-0 border-t border-b border-black sm:px-32">
           <div className="max-w-6xl">
             <Image
-              src={thePost.featuredImage.node.mediaItemUrl}
-              width={thePost.featuredImage.node.mediaDetails.width}
-              height={thePost.featuredImage.node.mediaDetails.height}
+              src={thePost.featuredImage ? thePost.featuredImage.node.mediaItemUrl : '/blog_IMG_08.jpg'}
+              width={thePost.featuredImage ? thePost.featuredImage.node.mediaDetails.width : '730'}
+              height={thePost.featuredImage ? thePost.featuredImage.node.mediaDetails.height : '486.67'}
               layout="responsive"
             />
           </div>
@@ -78,7 +78,7 @@ const BlogPost = ({ post, draftData }) => {
         <div
           className="w-full sm:w-2/3"
           dangerouslySetInnerHTML={{
-            __html: thePost.blogBuilder.blogBuilder[0].content,
+            __html: thePost.blogBuilder.blogBuilder[0] ? thePost.blogBuilder.blogBuilder[0].content : '',
           }}
         ></div>
       </div>
@@ -99,16 +99,36 @@ const BlogPost = ({ post, draftData }) => {
 };
 export default BlogPost;
 
-export async function getServerSideProps(context) {
-  const post = await getSinglePost(context.params.blog);
-  const draftData = context.preview ? context.preview : null;
+// export async function getServerSideProps(context) {
+//   const post = await getSinglePost(context.params.blog);
+//   const draftData = context.preview ? context.preview : null;
 
-  // const previewData = context.previewData;
-  return {
-    props: {
-      post,
-      draftData,
-      // previewData
-    },
-  };
-}
+//   // const previewData = context.previewData;
+//   return {
+//     props: {
+//       post,
+//       draftData,
+//       // previewData
+//     },
+//   };
+// }
+export async function getStaticProps(context) {
+    const post = await getSinglePost(context.params.blog);
+    const draftData = context.preview ? context.preview : null;
+  
+    return {
+      props: {
+        post,
+        draftData,
+      },
+    }
+  }
+  
+  export async function getStaticPaths() {
+    const allPosts = await getAllPostsWithSlug()
+  
+    return {
+      paths: allPosts.edges.map(({ node }) => `/blog/${node.slug}`) || [],
+      fallback: false,
+    }
+  }

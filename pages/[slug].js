@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navigation from "../components/Navigation/Navigation";
 
-import {getPageBuilder} from '../lib/api'
+import {getPageBuilder, getAllPagesWithSlug} from '../lib/api'
 import PageBuilder from '../components/PageBuilder/PageBuilder'
 import Footer from '../components/Footer/Footer'
 
@@ -35,15 +35,35 @@ const PageBuilderContent = ({ page, draftData, previewData }) => {
 
 export default PageBuilderContent;
 
-export async function getServerSideProps(context) {
+// export async function getServerSideProps(context) {
+//   const page = await getPageBuilder(context.params.slug);
+//   const draftData = context.preview ? context.preview : null ;
+//   // const previewData = context.previewData;
+//   return {
+//     props: { 
+//       page,
+//       draftData,
+//       // previewData
+//      },
+//   }
+// }
+export async function getStaticProps(context) {
   const page = await getPageBuilder(context.params.slug);
   const draftData = context.preview ? context.preview : null ;
-  // const previewData = context.previewData;
+
   return {
-    props: { 
+    props: {
       page,
       draftData,
-      // previewData
-     },
+    },
+  }
+}
+
+export async function getStaticPaths() {
+  const allPosts = await getAllPagesWithSlug()
+
+  return {
+    paths: allPosts.edges.map(({ node }) => `/${node.slug}`) || [],
+    fallback: false,
   }
 }

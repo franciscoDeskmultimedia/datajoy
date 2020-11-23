@@ -27,12 +27,16 @@ export default async function preview(req, res) {
       id: post.databaseId,
       slug: post.slug,
       status: post.status,
-      type: post.contentType.node.name
+      type: post.contentType.node.name,
     },
   })
 
   // Redirect to the path from the fetched post
   // We don't redirect to `req.query.slug` as that might lead to open redirect vulnerabilities
-  res.writeHead(307, { Location: `${ post.type == 'page' ? '/'+post.slug || post.databaseId : '/blog/'+post.slug || post.databaseId }` })
+
+  // res.writeHead(307, { Location: `${ '/'+post.contentType.node.name + post.slug || post.databaseId }` })
+
+  res.writeHead(307, { Location: `${ post.contentType.node.name == 'page' ? '/'+post.slug || post.databaseId : '/blog/'+post.slug || post.databaseId }` })
   res.end()
+  
 }

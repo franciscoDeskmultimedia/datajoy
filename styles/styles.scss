@@ -76,7 +76,7 @@ ol {
     counter-reset: my-awesome-counter;
     li{
         counter-increment: my-awesome-counter;
-        @apply text-5xl relative mb-16;
+        @apply text-3.5xl relative mb-16;
         &:before{
             content: "0" counter(my-awesome-counter) ;
             @apply text-xl absolute;
@@ -84,6 +84,9 @@ ol {
             position: absolute;
             left: -34px;
             bottom: 15px;
+        }
+        @screen sm{
+            @apply text-5xl relative mb-16;
         }
     }
 }
