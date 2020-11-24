@@ -6,23 +6,22 @@ const Navigation = () => {
   const [active, setActive] = useState(false);
   const [mobile, setMobile] = useState(false);
   useEffect(() => {
-    if(window.innerWidth < 1024){
+    if (window.innerWidth < 1024) {
       setMobile(true);
-    }else{
+    } else {
       setMobile(false);
     }
     function handleResize() {
-      console.log(window.innerWidth)
-      if(window.innerWidth < 1024){
+      console.log(window.innerWidth);
+      if (window.innerWidth < 1024) {
         setMobile(true);
-      }else{
+      } else {
         setMobile(false);
       }
-        
     }
-    window.addEventListener('resize', handleResize)
+    window.addEventListener("resize", handleResize);
   });
-  
+
   const toggleNav = () => {
     setActive(!active);
   };
@@ -54,16 +53,32 @@ const Navigation = () => {
       <div className="block lg:hidden">
         <button
           onClick={() => toggleNav()}
-          className="flex items-center px-3 py-2 border rounded"
+          className="flex items-center px-3 py-2"
         >
-          <svg
+          {/* <svg
             className="w-3 h-3 fill-current"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
             <title>Menu</title>
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
+          </svg> */}
+          {active ? <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.3334 2.54667L17.4534 0.666672L10.0001 8.12001L2.54675 0.666672L0.666748 2.54667L8.12008 10L0.666748 17.4533L2.54675 19.3333L10.0001 11.88L17.4534 19.3333L19.3334 17.4533L11.8801 10L19.3334 2.54667Z" fill="white"/>
+</svg>
+ : <svg
+            width="24"
+            height="16"
+            viewBox="0 0 24 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 16H24V13.3333H0V16ZM0 9.33333H24V6.66667H0V9.33333ZM0 0V2.66667H24V0H0Z"
+              fill="black"
+            />
+          </svg>}
+          
         </button>
       </div>
 
@@ -105,18 +120,18 @@ const Navigation = () => {
             : { opacity: 0, x: -1000, scaleX: 0 }
         }
         transition={{ duration: 0.2 }}
-        className={`lg:hidden flex nav-overlay flex-col justify-between flex-wrap fixed flex-grow  w-full lg:items-center lg:w-auto`}
+        className={`pt-10 px-4 pb-5 lg:hidden flex nav-overlay flex-col justify-between flex-wrap fixed flex-grow  w-full lg:items-center lg:w-auto`}
       >
         <div className="flex flex-col flex-wrap justify-start w-full text-sm lg:flex-grow">
           <Link href="/about">
             <a
-              className={`text-white w-full block mt-4 mr-4  lg:inline-block lg:mt-0 hover:text-gray`}
+              className={`text-white text-5xl w-full block mt-4 mr-4  lg:inline-block lg:mt-0 hover:text-gray`}
             >
               Our story
             </a>
           </Link>
           <Link href="/blog">
-            <a className="block w-full mt-4 mr-4 text-white lg:inline-block lg:mt-0 hover:text-gray">
+            <a className="block w-full mt-4 mr-4 text-5xl text-white lg:inline-block lg:mt-0 hover:text-gray">
               Blog
             </a>
           </Link>
@@ -125,10 +140,24 @@ const Navigation = () => {
           {/* <PrimaryButton linkName='Get beta' url='#'/> */}
           <Link href={`#`}>
             <a
-              style={{ backgroundColor: "#0E4830", color: "white" }}
-              className={`inline-block px-8 py-4 mt-4  text-base font-light leading-none text-center text-white rounded-full bg-djGreen bg-djGreen-500 lg:mt-0`}
+              style={{ color: "white" }}
+              className={`w-full text-5xl flex items-center font-light leading-none text-white lg:mt-0`}
             >
-              Get beta
+              <span className="mr-4">Get beta</span>
+              <span>
+                <svg
+                  width="42"
+                  height="28"
+                  viewBox="0 0 42 28"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0.75 11.75H32.6325L24.5775 3.6725L27.75 0.5L41.25 14L27.75 27.5L24.5775 24.3275L32.6325 16.25H0.75V11.75Z"
+                    fill="white"
+                  />
+                </svg>
+              </span>
             </a>
           </Link>
         </div>

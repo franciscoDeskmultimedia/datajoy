@@ -128,7 +128,9 @@ ol {
     transition:1s;
     border-bottom:1px solid white!important;
 }
-
+button:focus {
+    outline: none;
+}
 @import "~tailwindcss/utilities";
 
 
