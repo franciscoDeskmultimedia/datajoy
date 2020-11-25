@@ -131,6 +131,47 @@ ol {
 button:focus {
     outline: none;
 }
+@screen lg{
+    .article-content h2 {
+        font-size: 24px;
+        padding-left: 20%;
+    }
+    .article-content blockquote p {
+        padding-left: 15%;
+        font-size: 48px;
+        color: #0E4830;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .article-content > p {
+        padding-left: 20%;
+        font-size: 20px;
+        
+    }
+    .article-content > p img{
+        margin-left: -5%;
+        width: 100%;
+        
+    }
+}
+.article-content h2 {
+    font-size: 24px;
+}
+.article-content blockquote p {
+    font-size: 32px;
+    color: #0E4830;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.article-content > p {
+    font-size: 20px;
+    
+}
+.article-content > p img{
+    width: 100%;
+    
+}
+
 @import "~tailwindcss/utilities";
 
 

@@ -27,7 +27,7 @@ const Navigation = () => {
   };
   return (
     <nav
-      className={`fixed z-50 flex flex-wrap items-center justify-between w-full h-20 px-10 bg-white border-b border-black border-solid z-50flex sm:px-32 bg-white-500 ${
+      className={`fixed z-50 flex flex-wrap items-center justify-between w-full h-20 px-4 lg:px-32 bg-white border-b border-black border-solid z-50flex bg-white-500 ${
         active && mobile ? "navActive" : ""
       }`}
     >
