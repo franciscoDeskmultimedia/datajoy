@@ -197,6 +197,7 @@ export async function getStaticProps(context) {
       post,
       draftData,
     },
+    revalidate: 1, // In seconds
   };
 }
 
