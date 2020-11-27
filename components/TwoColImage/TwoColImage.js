@@ -29,6 +29,9 @@ const TwoColImage = (props) => {
       <div className="flex flex-wrap w-full px-10 py-20 items-betweens sm:px-20 lg:w-1/2">
         <div className="w-full">
           <h2>{props.title}</h2>
+          {props.subtitle ? <div className='hidden subtitle-desk lg:block'>{props.subtitle}</div> : null}
+      {props.mobileSubtitle ? <div className='subtitle-desk lg:hidden'>{props.mobileSubtitle}</div> : null}
+          <div className='subtitle-mobile'></div>
           <p className="mt-4">{props.text}</p>
         </div>
         <div className='self-end w-full'>

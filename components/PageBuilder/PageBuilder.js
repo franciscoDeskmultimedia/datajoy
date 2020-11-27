@@ -57,6 +57,8 @@ const PageBuilder = (props) => {
                   
                   <TwoColImage 
                     title={section.textContainer.title}
+                    subtitle={section.textContainer.subtitle}
+                    mobileSubtitle={section.textContainer.mobileSubtitle}
                     text={section.textContainer.copy}
                     fullImage={section.imageCol.fullImage}
                     imageSrc={section.imageCol.image.mediaItemUrl}
