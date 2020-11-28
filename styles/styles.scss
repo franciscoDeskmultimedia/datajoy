@@ -171,7 +171,30 @@ button:focus {
     width: 100%;
     
 }
-
+input:focus,select:focus {
+    outline: none;
+}
+.inputName,.inputEmail,.inputCompanyName,.inputCompanySize{
+    &.active{
+        label{
+            top:0px;
+            left: 0px;
+            color: black;
+            transform: translateY(0%) scale(0.8);
+            transition:0.5;
+            transform-origin: left;
+        }
+    }
+    label{
+        top: 50%;
+        left: 0px;
+        transform: translateY(-50%);
+        color: gray;
+        transition:0.5s;
+        z-index: 1;
+        pointer-events: none;
+    }
+}
 @import "~tailwindcss/utilities";
 
 

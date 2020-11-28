@@ -6,11 +6,12 @@ import Navigation from "../components/Navigation/Navigation";
 // import TwoColTitled from "../components/TwoColTitled/TwoColTitled";
 // import TwoColImage from "../components/TwoColImage/TwoColImage"
 // import EyeBrowHero from "../components/Heros/EyeBrowHero";
-import {getPageBuilder} from '../lib/api'
+import { getPageBuilder } from "../lib/api";
 import PageBuilder from "../components/PageBuilder/PageBuilder";
-import Footer from "../components/Footer/Footer"
+import GetDemoModal from '../components/GetDemoModal/GetDemoModal'
+import Footer from "../components/Footer/Footer";
 
-export default function Home({page}) {
+export default function Home({ page }) {
   const pageBuilder = page ? page.pageBy.pageBuilder.pageBuilder : null;
   return (
     <>
@@ -26,21 +27,22 @@ export default function Home({page}) {
         />
       </Head>
       <Navigation />
-      <PageBuilder page={pageBuilder}/>
-      <Footer/> 
+      <PageBuilder page={pageBuilder} />
+      {/* <GetDemoModal/> */}
+      <Footer />
     </>
   );
 }
 
 export async function getServerSideProps(context) {
-  const page = await getPageBuilder('home');
-  const draftData = context.preview ? context.preview : null ;
+  const page = await getPageBuilder("home");
+  const draftData = context.preview ? context.preview : null;
   // const previewData = context.previewData;
   return {
-    props: { 
+    props: {
       page,
       draftData,
       // previewData
-     },
-  }
+    },
+  };
 }
