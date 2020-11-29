@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from "framer-motion";
 
 const Navigation = () => {
+  const router = useRouter();
   const [active, setActive] = useState(false);
   const [mobile, setMobile] = useState(false);
+
   useEffect(() => {
     if (window.innerWidth < 1024) {
       setMobile(true);
@@ -101,14 +104,14 @@ const Navigation = () => {
         </div>
         <div>
           {/* <PrimaryButton linkName='Get beta' url='#'/> */}
-          <Link href={`#`}>
-            <a
+          <Link href='getbeta'>
+            <a 
               style={{ backgroundColor: "#0E4830", color: "white" }}
               className={`inline-block px-8 py-4 mt-4  text-base font-light leading-none text-center text-white rounded-full bg-djGreen bg-djGreen-500 lg:mt-0`}
             >
               Get beta
             </a>
-          </Link>
+            </Link>
         </div>
       </div>
 

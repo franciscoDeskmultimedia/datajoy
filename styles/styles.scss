@@ -195,6 +195,10 @@ input:focus,select:focus {
         pointer-events: none;
     }
 }
+.modalClose{
+    top: 20px;
+    right: 20px;
+}
 @import "~tailwindcss/utilities";
 
 

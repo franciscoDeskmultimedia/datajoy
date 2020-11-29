@@ -1,19 +1,21 @@
 import Image from "next/image";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { useState } from "react";
+import {useRouter} from 'next/router'
 
 const GetDemoModal = (props) => {
   const [nameInput, setNameActive] = useState(false);
   const [emailInput, setEmailActive] = useState(false);
   const [companyInput, setCompanyNameActive] = useState(false);
   const [companySizeInput, setCompanySizeActive] = useState(false);
+  const router = useRouter();
 
   const toggleLabel = (el) => {
     const nameVal = document.getElementById("name").value;
     const emailVal = document.getElementById("email").value;
     const companyNameVal = document.getElementById("companyName").value;
     const companySizeVal = document.getElementById("companySize").value;
-    console.log(companySizeVal)
+    console.log(companySizeVal);
 
     if (el == "name" && nameVal == "") {
       setNameActive(!nameInput);
@@ -30,11 +32,28 @@ const GetDemoModal = (props) => {
   };
   return (
     <section className="fixed top-0 left-0 z-50 flex items-center w-full h-full bg-white getBeta-overlay ">
-        <div className='absolute top-0 right-0'>X</div>
+      <div className="absolute modalClose">
+          <a className='cursor-pointer ' onClick={()=>router.back()}>
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M19.3334 2.54667L17.4534 0.666672L10.0001 8.12001L2.54675 0.666672L0.666748 2.54667L8.12008 10L0.666748 17.4533L2.54675 19.3333L10.0001 11.88L17.4534 19.3333L19.3334 17.4533L11.8801 10L19.3334 2.54667Z"
+            fill="black"
+          />
+        </svg>
+        </a>
+      </div>
       <div className="flex flex-wrap items-center h-full">
         <div className="h-full px-4 py-6 bg-white lg:px-32 lg:py-20 lg:w-1/2">
           <div className="mb-10">
+             <a className='cursor-pointer ' onClick={()=>router.push(router.basePath)}>
             <Image src="/datajoy-logo.png" width="111" height="32" />
+            </a> 
           </div>
           <h3 className="mb-5">Become a beta customer</h3>
           <p className="mb-8 ">

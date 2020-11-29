@@ -1,15 +1,15 @@
 import Head from "next/head";
 import Navigation from "../components/Navigation/Navigation";
 
-import {getPageBuilder, getAllPagesWithSlug} from '../lib/api'
-import PageBuilder from '../components/PageBuilder/PageBuilder'
-import Footer from '../components/Footer/Footer'
+import { getPageBuilder, getAllPagesWithSlug } from "../lib/api";
+import PageBuilder from "../components/PageBuilder/PageBuilder";
+import Footer from "../components/Footer/Footer";
 
 const PageBuilderContent = ({ page, draftData, previewData }) => {
-
   // console.log('dataDraft' + draftData);
   // console.log('preview data : ' + previewData.post.id + ' slug : ' + previewData.post.slug + ' post status: ' + previewData.post.status )
-  const pageBuilder = page ? page.pageBy.pageBuilder.pageBuilder : '';
+  const pageBuilder =
+    page.pageBy != null ? page.pageBy.pageBuilder.pageBuilder : "";
   return (
     <>
       <Head>
@@ -24,10 +24,21 @@ const PageBuilderContent = ({ page, draftData, previewData }) => {
         />
       </Head>
       <Navigation />
-      { page.pageBy.status == 'publish' ||  draftData == true ?
-       <PageBuilder page={pageBuilder}/>
-      
-      : (<h1>Page under construction</h1>)}
+      {page.pageBy != null ? (
+        page.pageBy.status == "publish" || draftData == true ? (
+          <PageBuilder page={pageBuilder} />
+        ) : (
+          <div className="flex flex-wrap items-center justify-center px-4 py-20 lg:px-32">
+            <h1 className="text-center">Page under construction</h1>
+          </div>
+        )
+      ) : (
+        <div className="flex flex-wrap items-center justify-center px-4 py-20 lg:px-32">
+          <h2 className="w-full text-center">Page doesnt exist</h2>
+          <h1 className="w-full text-center">You might be looking for :</h1>
+        </div>
+      )}
+
       <Footer></Footer>
     </>
   );
@@ -37,15 +48,15 @@ export default PageBuilderContent;
 
 export async function getServerSideProps(context) {
   const page = await getPageBuilder(context.params.slug);
-  const draftData = context.preview ? context.preview : null ;
+  const draftData = context.preview ? context.preview : null;
   // const previewData = context.previewData;
   return {
-    props: { 
+    props: {
       page,
       draftData,
       // previewData
-     },
-  }
+    },
+  };
 }
 // export async function getStaticProps(context) {
 //   const page = await getPageBuilder(context.params.slug);
