@@ -1,8 +1,35 @@
 import Image from "next/image";
 import PrimaryButton from '../Buttons/PrimaryButton'; 
+import { useState } from "react";
 const Footer = () => {
+  const [nameInput, setNameActive] = useState(false);
+  const [emailInput, setEmailActive] = useState(false);
+  const [companyInput, setCompanyNameActive] = useState(false);
+  const [companySizeInput, setCompanySizeActive] = useState(false);
+
+  const toggleLabel = (el) => {
+    const nameVal = document.getElementById("name").value;
+    const emailVal = document.getElementById("email").value;
+    const companyNameVal = document.getElementById("companyName").value;
+    const companySizeVal = document.getElementById("companySize").value;
+    console.log(companySizeVal);
+
+    if (el == "name" && nameVal == "") {
+      setNameActive(!nameInput);
+    }
+    if (el == "email" && emailVal == "") {
+      setEmailActive(!emailInput);
+    }
+    if (el == "companyName" && companyNameVal == "") {
+      setCompanyNameActive(!companyInput);
+    }
+    if (el == "companySize" && companySizeVal == "default") {
+      setCompanySizeActive(!companySizeInput);
+    }
+  };
+  
   return (
-    <footer className="pt-20 text-white bg-black ">
+    <footer className="pt-20 text-white bg-black footer ">
       <div className='px-10 sm:px-32'>
         <div className="w-full">
           <h1 className="w-4/5 sm:w-3/5">Sign up & become a beta customer</h1>
@@ -18,58 +45,101 @@ const Footer = () => {
             </p>
           </div>
           <div className="w-full sm:w-2/5">
-            <form className="">
+            <form autoComplete="off" className="">
+            <div className={`relative inputName ${nameInput ? "active" : ""}`}>
+              <label className="absolute text-white top">Name:</label>
               <input
-                className="w-full p-4 px-0 font-light text-white bg-black border-b border-white"
+                className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
                 id="name"
                 type="text"
                 aria-label="Name"
-                placeholder="Name"
+                onFocus={() => toggleLabel("name")}
+                onBlur={() => toggleLabel("name")}
+                // placeholder="Name"
               />
+            </div>
+
+            <div
+              className={`relative inputEmail ${emailInput ? "active" : ""}`}
+            >
+              <label className="absolute text-white top">Email:</label>
               <input
-                className="w-full p-4 px-0 font-light text-white bg-black border-b border-white"
+                className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
                 id="email"
                 type="email"
                 aria-label="email address"
-                placeholder="Email"
+                onFocus={() => toggleLabel("email")}
+                onBlur={() => toggleLabel("email")}
+                //   placeholder="Email"
               />
+            </div>
+
+            <div
+              className={`relative inputCompanyName ${
+                companyInput ? "active" : ""
+              }`}
+            >
+              <label className="absolute text-white top">Company Name:</label>
               <input
-                className="w-full p-4 px-0 font-light text-white bg-black border-b border-white"
+                className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
                 id="companyName"
                 type="text"
                 aria-label="Company Name"
-                placeholder="Company Name"
+                onFocus={() => toggleLabel("companyName")}
+                onBlur={() => toggleLabel("companyName")}
+                // placeholder="Company Name"
               />
+            </div>
+
+            <div
+              className={`relative inputCompanySize ${
+                companySizeInput ? "active" : ""
+              }`}
+            >
+              <label className="absolute text-white top">Company Size:</label>
               <select
-                className="w-full p-4 px-0 font-light text-white bg-black border-b border-white"
+                className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
                 id="companySize"
                 aria-label="email address"
-                placeholder="Enter your email address"
+                onFocus={() => toggleLabel("companySize")}
+                onBlur={() => toggleLabel("companySize")}
+                // placeholder="Enter your email address"
               >
-                <option value="default">Company Size</option>
+                <option defaultValue value="default"></option>
                 <option value="1">1</option>
                 <option value="2-5">2-5</option>
                 <option value="6-10">6-10</option>
                 <option value="11+">11+</option>
               </select>
-              <select
-                className="w-full p-4 px-0 font-light text-white bg-black border-b border-white"
-                id="category"
-                aria-label="email address"
-                placeholder="Enter your email address"
-              >
-                <option value="default">Category</option>
-                <option value="1">Marketing</option>
-                <option value="2-5">Real estate</option>
-              </select>
-              <p className='py-5 text-xs '>By signing up, I agree to Datajoy’s privacy policy & terms of service.</p>
-              {/* <button
+            </div>
+
+            <select
+              className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
+              id="category"
+              aria-label="email address"
+              placeholder="Enter your email address"
+            >
+              <option value="default">Category</option>
+              <option value="1">Marketing</option>
+              <option value="2-5">Real estate</option>
+            </select>
+            <p className="py-5 text-xs ">
+              By signing up, I agree to Datajoy’s privacy policy & terms of
+              service.
+            </p>
+            {/* <button
                 className="p-2 text-white duration-300 bg-blue-600 rounded-r shadow hover:bg-blue-700"
                 type="submit"
               >
                 Sign Up
               </button> */}
-              <PrimaryButton linkName='Optimize my revenue' url='#' buttonColor='white' textColor='black' fullWidth />
+            <PrimaryButton
+              linkName="Optimize my revenue"
+              url="#"
+              buttonColor="Secondary"
+              textColor="black"
+              fullWidth
+            />
             </form>
           </div>
         </div>
@@ -77,7 +147,7 @@ const Footer = () => {
       <div className="flex items-center justify-between w-full py-10 border-t border-white">
         <div className='pl-10 sm:pl-32'>
           <Image
-            src="/logo-white.png"
+            src="/datajoy_logo_REV.svg"
             width="111"
             height="32"
             layout="intrinsic"

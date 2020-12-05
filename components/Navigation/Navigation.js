@@ -40,13 +40,13 @@ const Navigation = () => {
           <div>
             <img
               className="hidden cursor-pointer lg:block "
-              src="/datajoy-logo.png"
+              src="/datajoy_logo_POS.svg"
               width="111"
               height="32"
             ></img>
             <img
               className="cursor-pointer lg:hidden "
-              src={active ? "/logo-white.png" : "/datajoy-logo.png"}
+              src={active ? "/datajoy_logo_REV.svg" : "/datajoy_logo_POS.svg"}
               width="111"
               height="32"
             ></img>
@@ -105,9 +105,8 @@ const Navigation = () => {
         <div>
           {/* <PrimaryButton linkName='Get beta' url='#'/> */}
           <Link href='getbeta'>
-            <a 
-              style={{ backgroundColor: "#0E4830", color: "white" }}
-              className={`inline-block px-8 py-4 mt-4  text-base font-light leading-none text-center text-white rounded-full bg-djGreen bg-djGreen-500 lg:mt-0`}
+            <a
+              className={`hover:bg-djGreenHover-500 transition duration-500 inline-block px-8 py-4 mt-4  text-base font-light leading-none text-center text-white rounded-full bg-djGreen bg-djGreen-500 lg:mt-0`}
             >
               Get beta
             </a>
@@ -126,15 +125,22 @@ const Navigation = () => {
         className={`pt-10 px-4 pb-5 lg:hidden flex nav-overlay flex-col justify-between flex-wrap fixed flex-grow  w-full lg:items-center lg:w-auto`}
       >
         <div className="flex flex-col flex-wrap justify-start w-full text-sm lg:flex-grow">
+        <Link href="/">
+            <a
+              onClick={()=>setActive(false)} className={`text-white text-5xl w-full block mt-4 mr-4  lg:inline-block lg:mt-0 hover:text-gray`}
+            >
+              Home
+            </a>
+          </Link>
           <Link href="/about">
             <a
-              className={`text-white text-5xl w-full block mt-4 mr-4  lg:inline-block lg:mt-0 hover:text-gray`}
+              onClick={()=>setActive(false)} className={`text-white text-5xl w-full block mt-4 mr-4  lg:inline-block lg:mt-0 hover:text-gray`}
             >
               Our story
             </a>
           </Link>
           <Link href="/blog">
-            <a className="block w-full mt-4 mr-4 text-5xl text-white lg:inline-block lg:mt-0 hover:text-gray">
+            <a onClick={()=>setActive(false)} className="block w-full mt-4 mr-4 text-5xl text-white lg:inline-block lg:mt-0 hover:text-gray">
               Blog
             </a>
           </Link>
@@ -142,7 +148,8 @@ const Navigation = () => {
         <div>
           {/* <PrimaryButton linkName='Get beta' url='#'/> */}
           <Link href={`#`}>
-            <a
+            <a 
+              onClick={()=>setActive(false)}
               style={{ color: "white" }}
               className={`w-full text-5xl flex items-center font-light leading-none text-white lg:mt-0`}
             >

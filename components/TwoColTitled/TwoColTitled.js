@@ -8,7 +8,7 @@ const TwoColTitled = (props) => {
       className="flex px-4 pt-20 pb-40 bg-black md:px-32"
     >
       {props.iconSrc ? (
-        <div className="items-start justify-end hidden w-3/12 pt-4 pr-8 sm:flex">
+        <div className="items-start justify-end hidden pt-4 pr-8 lg:w-2/12 sm:flex">
           <Image
             layout="intrinsic"
             src={props.iconSrc}
@@ -20,7 +20,7 @@ const TwoColTitled = (props) => {
 
       <div
         className={`flex flex-wrap w-full ${
-          props.iconSrc ? "sm:w-9/12" : "w-full"
+          props.iconSrc ? "lg:w-10/12" : "w-full"
         }`}
       >
         <h1

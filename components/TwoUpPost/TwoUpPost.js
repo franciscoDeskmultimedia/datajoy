@@ -14,7 +14,7 @@ const TwoUpPost = (props) => {
     <section className="flex flex-wrap items-center bg-black twoUpPost">
       <div className="order-2 w-full py-20 pl-4 pr-10 text-white bg-black lg:pl-32 sm:pl-24 lg:order-none twoUpPostContent lg:w-1/2">
         <div className='flex items-center w-full'>
-          <div className="mr-2 uppercase rounded-full pill pill-white">
+          <div className="mr-5 uppercase rounded-full pill pill-white">
             <p className='text-sm'>{props.category}</p>
           </div>
           <div className="readTime">

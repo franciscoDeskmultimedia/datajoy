@@ -23,27 +23,27 @@ const TitledSlider = () => {
   return (
     <Slider {...SliderSettings}>
       <div className="w-full sm:pr-2">
-        <div className="relative slider-one ">
+        <div className="relative slider-one">
           <Image
-            className="object-cover"
+            className="object-cover "
             src="/home_IMG_HERO.jpg"
             layout="fill"
           />
         </div>
-        <div className="flex items-center pt-6 pb-3">
+        <div className="flex items-center pt-8 pb-3">
           <div className="uppercase rounded-full pill pill-sand">
-            <p className="text-sm">growth</p>
+            <p className="text-sm">Product</p>
           </div>
           <div>
-            <p className="ml-2 text-sm">2 min read</p>
+            <p className="ml-2 text-sm">6 min read</p>
           </div>
         </div>
         <Link href='#'>
         <h3>Single source of truth for end to end SaaS metrics</h3>
         </Link>
         <div className="w-full mt-5 author">
-          <p>
-            By Francisco Cornejo. <span>11 Nov 2020</span>
+          <p className='text-base'>
+            By Ken Wong .  <span>09 Sep 2020</span>
           </p>
         </div>
       </div>
@@ -52,24 +52,24 @@ const TitledSlider = () => {
         <div className="relative slider-two ">
           <Image
             className="object-cover"
-            src="/home_IMG_HERO.jpg"
+            src="/blog_IMG_05.jpg"
             layout="fill"
           />
         </div>
-        <div className="flex items-center pt-6 pb-3">
+        <div className="flex items-center pt-8 pb-3">
           <div className="uppercase rounded-full pill pill-sand">
-            <p className="text-sm">growth</p>
+            <p className="text-sm">Product</p>
           </div>
           <div>
-            <p className="ml-2 text-sm">2 min read</p>
+            <p className="ml-2 text-sm">6 min read</p>
           </div>
         </div>
         <Link href='#'>
-        <h3>Single source of truth for end to end SaaS metrics</h3>
+        <h3>Get up and running in days, not months</h3>
         </Link>
         <div className="w-full mt-5 author">
-          <p>
-            By Francisco Cornejo. <span>11 Nov 2020</span>
+          <p className='text-base'>
+            By Ken Wong .  <span>09 Sep 2020</span>
           </p>
         </div>
       </div>
@@ -78,24 +78,24 @@ const TitledSlider = () => {
         <div className="relative slider-three ">
           <Image
             className="object-cover"
-            src="/home_IMG_HERO.jpg"
+            src="/blog_IMG_06.jpg"
             layout="fill"
           />
         </div>
-        <div className="flex items-center pt-6 pb-3">
+        <div className="flex items-center pt-8 pb-3">
           <div className="uppercase rounded-full pill pill-sand">
-            <p className="text-sm">growth</p>
+            <p className="text-sm">Product</p>
           </div>
           <div>
-            <p className="ml-2 text-sm">2 min read</p>
+            <p className="ml-2 text-sm">6 min read</p>
           </div>
         </div>
         <Link href='#'>
-        <h3>Single source of truth for end to end SaaS metrics</h3>
+        <h3>Hi CFOs, datajoy is here to optimize your revenue</h3>
         </Link>
         <div className="w-full mt-5 author">
-          <p>
-            By Francisco Cornejo. <span>11 Nov 2020</span>
+          <p className='text-base'>
+          By Ken Wong .  <span>09 Sep 2020</span>
           </p>
         </div>
       </div>

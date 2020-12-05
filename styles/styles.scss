@@ -1,204 +1,262 @@
 @import "~tailwindcss/base";
 @import "~tailwindcss/components";
 
-*{
-    font-family: 'Poppins', sans-serif;
+* {
+  font-family: "Poppins", sans-serif;
 }
-h1{
-    @apply text-5xl;
+.slick-list, .slick-track { touch-action:pan-y; }
+h1 {
+  @apply text-5xl;
+  line-height: 110%;
+  letter-spacing: -0.01em;
+}
+h2 {
+  @apply text-3.5xl;
+  line-height: 112%;
+  letter-spacing: -0.01em;
+}
+h3 {
+  @apply text-3.5xl;
+  line-height: 112%;
+  letter-spacing: -0.01em;
+}
+p {
+  @apply font-light;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.01em;
+}
+@screen sm {
+  h1 {
+    @apply text-7xl;
     line-height: 110%;
     letter-spacing: -0.01em;
-}
-h2{
+  }
+  h2 {
+    @apply text-5xl;
+    line-height: 112%;
+    letter-spacing: -0.01em;
+  }
+  h3 {
     @apply text-3.5xl;
     line-height: 112%;
     letter-spacing: -0.01em;
-}
-h3{
-    @apply text-3.5xl;
-    line-height: 112%;
-    letter-spacing: -0.01em;
-}
-p{
+  }
+  p {
     @apply font-light;
     font-size: 20px;
     line-height: 140%;
-    letter-spacing: -0.01em;
+    letter-spacing: normal;
+  }
 }
-@screen sm{
-    h1{
-        @apply text-7xl;
-        line-height: 110%;
-        letter-spacing: -0.01em;
+.twocolimage {
+  .containImage {
+    min-height: 375px;
+    @screen sm {
+      min-height: 640px;
     }
-    h2{
-        @apply text-5xl;
-        line-height: 112%;
-        letter-spacing: -0.01em;
+  }
+  .fullImage {
+    min-height: 375px;
+    @screen sm {
+      min-height: 640px;
     }
-    h3{
-        @apply text-3.5xl;
-        line-height: 112%;
-        letter-spacing: -0.01em;
+    img {
+      @apply object-cover object-center;
     }
-    p{
-        @apply font-light;
-        font-size: 20px;
-        line-height: 140%;
-        letter-spacing: normal;
-    }
+  }
 }
-.twocolimage{
-    .containImage{
-        min-height: 375px;
-        @screen sm {
-            min-height: 640px;
-        }
-    }
-    .fullImage{
-        min-height: 375px;
-        @screen sm {
-            min-height: 640px;
-        }
-        img{
-            @apply object-cover object-center;
-        }
-    }
+.eyebrow {
+  @apply text-xl;
+  min-width: 120px;
 }
-.eyebrow{
-    @apply text-xl;
-    min-width: 120px;
-}
-.fullImageContainer{
-    height: 640px;
+.fullImageContainer {
+  height: 640px;
 }
 ol {
-    counter-reset: my-awesome-counter;
-    li{
-        counter-increment: my-awesome-counter;
-        @apply text-3.5xl relative mb-16;
-        &:before{
-            content: "0" counter(my-awesome-counter) ;
-            @apply text-xl absolute;
-            content: "0" counter(my-awesome-counter);
-            position: absolute;
-            left: -34px;
-            bottom: 15px;
-        }
-        @screen sm{
-            @apply text-5xl relative mb-16;
-        }
+  counter-reset: my-awesome-counter;
+  li {
+    counter-increment: my-awesome-counter;
+    @apply text-3.5xl relative mb-16;
+    &:before {
+      content: "0" counter(my-awesome-counter);
+      @apply text-xl absolute h-16 pb-1 flex items-end;
+      content: "0" counter(my-awesome-counter);
+      position: absolute;
+      left: -34px;
+      top: 0px;
     }
-}
-.twoUpPostImage{
-    height: 100vw;
-    @screen lg{
-        height: 50vw;
+    @screen sm {
+      @apply text-5xl relative mb-16;
     }
+  }
 }
-.pill{
-    padding:6px 16px;
-    &.pill-white{
-        background: white;
-        color:black;
-    }
-    &.pill-sand{
-        background: #EEEEDA;
-        color:black;
-    }
+.twoUpPostImage {
+  height: 100vw;
+  @screen lg {
+    height: 50vw;
+  }
 }
-.slider-one, .slider-three{
-    height: 440px;
+.pill {
+  padding: 6px 16px;
+  &.pill-white {
+    background: white;
+    color: black;
+  }
+  &.pill-sand {
+    background: #eeeeda;
+    color: black;
+  }
 }
-.slider-two{
-    height: 350px;
+.slider-one,
+.slider-three {
+  height: 440px;
+}
+.slider-two {
+  height: 350px;
 }
 .nav-overlay {
-    height: calc(100vh - 80px);
-    left: 0;
-    top: 80px;
-    background: black;
-    color: white;
-    z-index: 9999;
+  height: calc(100vh - 80px);
+  left: 0;
+  top: 80px;
+  background: black;
+  color: white;
+  z-index: 9999;
 }
-.navActive{
-    background-color: black!important;
-    border-color: white!important;
-    color: white;
-    transition:1s;
-    border-bottom:1px solid white!important;
+.navActive {
+  background-color: black !important;
+  border-color: white !important;
+  color: white;
+  transition: 1s;
+  border-bottom: 1px solid white !important;
 }
 button:focus {
-    outline: none;
-}
-@screen lg{
-    .article-content h2 {
-        font-size: 24px;
-        padding-left: 20%;
-    }
-    .article-content blockquote p {
-        padding-left: 15%;
-        font-size: 48px;
-        color: #0E4830;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-    .article-content > p {
-        padding-left: 20%;
-        font-size: 20px;
-        
-    }
-    .article-content > p img{
-        margin-left: -5%;
-        width: 100%;
-        
-    }
+  outline: none;
 }
 .article-content h2 {
-    font-size: 24px;
+  font-size: 24px;
 }
 .article-content blockquote p {
-    font-size: 32px;
-    color: #0E4830;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  font-size: 32px;
+  color: #0e4830;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .article-content > p {
+  font-size: 20px;
+}
+.article-content > p img {
+  width: 100%;
+}
+.article-content > pre  {
+  padding-left: 0%;
+}
+.article-content > pre img {
+  width: 100%;
+}
+@screen lg {
+  .article-content h2 {
+    font-size: 24px;
+    padding-left: 20%;
+  }
+  .article-content blockquote p {
+    padding-left: 10%;
+    font-size: 48px;
+    color: #0e4830;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .article-content > p {
+    padding-left: 20%;
     font-size: 20px;
-    
-}
-.article-content > p img{
+  }
+  .article-content > p img {
+    margin-left: -5%;
     width: 100%;
-    
+  }
+  .article-content > pre  {
+    padding-left: 10%;
+  }
+  .article-content > pre img {
+    width: 100%;
+  }
 }
-input:focus,select:focus {
-    outline: none;
+input:focus,
+select:focus {
+  outline: none;
 }
-.inputName,.inputEmail,.inputCompanyName,.inputCompanySize{
-    &.active{
-        label{
-            top:0px;
-            left: 0px;
-            color: black;
-            transform: translateY(0%) scale(0.8);
-            transition:0.5;
-            transform-origin: left;
-        }
+.getBeta-overlay .inputName,
+.getBeta-overlay .inputEmail,
+.getBeta-overlay .inputCompanyName,
+.getBeta-overlay .inputCompanySize {
+  &.active {
+    label {
+      top: 0px;
+      left: 0px;
+      color: black;
+      transform: translateY(0%) scale(0.8);
+      transition: 0.5;
+      transform-origin: left;
     }
-    label{
-        top: 50%;
-        left: 0px;
-        transform: translateY(-50%);
-        color: gray;
-        transition:0.5s;
-        z-index: 1;
-        pointer-events: none;
-    }
+  }
+  label {
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    color: gray;
+    transition: 0.5s;
+    z-index: 1;
+    pointer-events: none;
+  }
 }
-.modalClose{
-    top: 20px;
-    right: 20px;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  background-color: black !important;
+}
+
+.footer .inputName,
+.footer .inputEmail,
+.footer .inputCompanyName,
+.footer .inputCompanySize {
+  &.active {
+    label {
+      top: 0px;
+      left: 0px;
+      color: white;
+      transform: translateY(0%) scale(0.8);
+      transition: 0.5;
+      transform-origin: left;
+    }
+  }
+  label {
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    color: white;
+    transition: 0.5s;
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+.modalClose {
+  top: 20px;
+  right: 20px;
+}
+
+.linkedTitle {
+  svg {
+    transition: 0.5s;
+  }
+  &:hover {
+    & > svg {
+      transform: translateX(10px);
+      transition: 0.5s;
+    }
+  }
+}
+.entryImage{
+  max-width: 920px;
 }
 @import "~tailwindcss/utilities";
-
-

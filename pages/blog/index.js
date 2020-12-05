@@ -97,9 +97,9 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                       exit={{ opacity: 0 }}
                     >
                       <Image
-                        src={item.featuredImage.node.mediaItemUrl}
-                        width={item.featuredImage.node.mediaDetails.width}
-                        height={item.featuredImage.node.mediaDetails.height}
+                        src={item.thumbImage.thumbImage ? item.thumbImage.thumbImage.mediaItemUrl : item.featuredImage.node.mediaItemUrl }
+                        width={item.thumbImage.thumbImage ? item.thumbImage.thumbImage.mediaDetails.width : item.featuredImage.node.mediaDetails.width}
+                        height={item.thumbImage.thumbImage ? item.thumbImage.thumbImage.mediaDetails.height : item.featuredImage.node.mediaDetails.height}
                         layout="responsive"
                       />
                       <div className="flex items-center pt-6 pb-3">
@@ -176,7 +176,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
           })}
         </div>
 
-        <div className="pb-40 text-white slider articles bg-djGreen-500">
+        <div className="pb-40 overflow-hidden text-white slider articles bg-djGreen-500 ">
           <div className="flex items-end justify-between px-4 py-8 border-b border-white sm:px-32">
             <h2 className='leading-none'>Popular articles </h2>
             <p className='text-right'>Get the latest on tech, business and entrepreneurship</p>
@@ -201,10 +201,11 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                       exit={{ opacity: 0 }}
                     >
                       <Image
-                        src={item.featuredImage.node.mediaItemUrl}
-                        width={item.featuredImage.node.mediaDetails.width}
-                        height={item.featuredImage.node.mediaDetails.height}
+                        src={item.thumbImage.thumbImage != null ? item.thumbImage.thumbImage.mediaItemUrl : item.featuredImage.node.mediaItemUrl}
+                        width={item.thumbImage.thumbImage != null ? item.thumbImage.thumbImage.mediaDetails.width : item.featuredImage.node.mediaDetails.width}
+                        height={item.thumbImage.thumbImage != null ? item.thumbImage.thumbImage.mediaDetails.height : item.featuredImage.node.mediaDetails.height}
                         layout="responsive"
+                        
                       />
                       <div className="flex items-center pt-6 pb-3">
                         <div className="uppercase rounded-full pill pill-sand">

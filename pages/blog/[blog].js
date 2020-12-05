@@ -47,12 +47,22 @@ const BlogPost = ({ post, draftData }) => {
         <h1 className="hidden max-w-6xl px-4 lg:block sm:px-32">{thePost.title}</h1>
         <div className="px-4 mt-10 mb-12 sm:px-32">
           <div className="flex flex-wrap justify-between">
-            <div className="flex w-full ">
-              <p className="mr-4 text-sm">{thePost.categories.nodes[0].name}</p>
-              <p className="text-sm">{thePost.readTime.readTime}</p>
+            <div className="flex items-center justify-between w-full ">
+              <div className='flex items-center'>
+                <p className="px-3 py-1 mr-4 text-sm rounded-full bg-whiteRock-500 hover:bg-whiteRock-600">{thePost.categories.nodes[0].name}</p>
+                <p className="text-sm">{thePost.readTime.readTime}</p>
+              </div>
+              <div className='hidden lg:block'>
+                <p className="text-sm">
+                  {thePost.author.node.firstName +
+                    " " +
+                    thePost.author.node.lastName}
+                  , {transformDate(thePost.date)}
+                </p>
+              </div>
             </div>
             <h1 className="block w-full lg:hidden ">{thePost.title}</h1>
-            <div className='w-full lg:w-auto'>
+            <div className='w-full lg:w-auto lg:hidden'>
               <p className="text-sm">
                 {thePost.author.node.firstName +
                   " " +
@@ -63,7 +73,7 @@ const BlogPost = ({ post, draftData }) => {
           </div>
         </div>
         <div className="w-full px-0 border-t border-b border-black sm:px-32">
-          <div className="max-w-6xl">
+          <div className="entryImage">
             <Image
               src={
                 thePost.featuredImage
@@ -88,8 +98,8 @@ const BlogPost = ({ post, draftData }) => {
       <div className="flex flex-wrap px-4 pt-40 pb-40 lg:px-32 postContent">
         <div className="order-2 w-full lg:order-1 lg:w-1/3 shareLinks">
           <h3 className='hidden lg:flex' >{thePost.title}</h3>
-          <p className="hidden mt-5 lg:flex">{transformDate(thePost.date)}</p>
-          <div className="flex mt-4 socialShare">
+          <p className="hidden mt-5 text-base lg:text-sm lg:flex">{transformDate(thePost.date)}</p>
+          <div className="flex mt-8 socialShare">
             <div className="mr-2 linkedIn">
               <Link
                 href={`http://www.linkedin.com/shareArticle?mini=true&url=${baseUrl}/blog/${thePost.slug}&title=${thePost.title}&source=${baseUrl}`}
