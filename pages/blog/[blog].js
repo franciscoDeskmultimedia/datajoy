@@ -8,7 +8,8 @@ import { getSinglePost, getAllPostsWithSlug, getAllPosts } from "../../lib/api";
 import Footer from "../../components/Footer/Footer";
 import { AnimatePresence, motion } from "framer-motion";
 const BlogPost = ({ post, sliderPosts, draftData }) => {
-  const baseUrl = process.env.BASE_URL;
+  // const baseUrl = process.env.BASE_URL;
+  const baseUrl = 'https://datajoy.vercel.app'
   let popularPost = sliderPosts.posts.nodes.filter(
     (postFiltered) => postFiltered.popularArticle.popularArticle == true
   );
