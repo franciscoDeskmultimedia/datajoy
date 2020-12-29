@@ -104,7 +104,7 @@ const Navigation = () => {
         </div>
         <div>
           {/* <PrimaryButton linkName='Get beta' url='#'/> */}
-          <Link href='getbeta'>
+          <Link href='/getbeta'>
             <a
               className={`hover:bg-djGreenHover-500 transition duration-500 inline-block px-8 py-4 mt-4  text-base font-light leading-none text-center text-white rounded-full bg-djGreen bg-djGreen-500 lg:mt-0`}
             >
