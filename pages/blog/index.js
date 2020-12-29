@@ -22,7 +22,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
   let allPosts = {};
   if (chooseCat != "Uncategorized") {
     allPosts = posts.posts.nodes.filter(
-      (postFiltered) => postFiltered.categories.nodes[0].name == chooseCat
+      (postFiltered) => postFiltered.categories.nodes[0].name == chooseCat && postFiltered.popularArticle.popularArticle != true
     );
   } else {
     allPosts = posts.posts.nodes;
@@ -86,11 +86,11 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
           ))}
         </div>
 
-        <div className="flex flex-wrap w-full px-4 mt-20 mb-20 post-1-row sm:px-32 ">
+        <div className={`${allPosts.length < 1 ? 'hidden' : '' } flex flex-wrap w-full px-4 mt-20 mb-20 post-1-row sm:px-32`} >
+          <p>{console.log(allPosts)}</p>
           {allPosts.map((item, index) => {
             if (chooseCat == "Uncategorized") {
               if (index <= 1 && item.popularArticle.popularArticle != true ) {
-                console.log(item.popularArticle)
                 return (
                   <AnimatePresence key={item.id} exitBeforeEnter={true}>
                     <motion.div
