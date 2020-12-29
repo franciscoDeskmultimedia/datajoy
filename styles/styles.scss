@@ -259,4 +259,10 @@ input:-webkit-autofill:active {
 .entryImage{
   max-width: 920px;
 }
+.slick-slide > div:focus {
+  outline: none;
+}
+.slick-slide {
+  outline: none
+}
 @import "~tailwindcss/utilities";

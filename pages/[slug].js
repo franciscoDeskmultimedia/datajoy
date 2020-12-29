@@ -8,8 +8,8 @@ import Footer from "../components/Footer/Footer";
 const PageBuilderContent = ({ page, draftData, previewData }) => {
   // console.log('dataDraft' + draftData);
   // console.log('preview data : ' + previewData.post.id + ' slug : ' + previewData.post.slug + ' post status: ' + previewData.post.status )
-  const pageBuilder =
-    page.pageBy != null ? page.pageBy.pageBuilder.pageBuilder : "";
+  const pageBuilder = page.pageBy != null ? page.pageBy.pageBuilder.pageBuilder : "";
+  const modified = page ? page.pageBy.modified : null;
   return (
     <>
       <Head>
@@ -26,7 +26,7 @@ const PageBuilderContent = ({ page, draftData, previewData }) => {
       <Navigation />
       {page.pageBy != null ? (
         page.pageBy.status == "publish" || draftData == true ? (
-          <PageBuilder page={pageBuilder} />
+          <PageBuilder page={pageBuilder} modified={modified}/>
         ) : (
           <div className="flex flex-wrap items-center justify-center px-4 py-20 lg:px-32">
             <h1 className="text-center">Page under construction</h1>

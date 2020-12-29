@@ -4,11 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import TitledSlider from "../../components/TitledSlider/TitledSlider";
 
-import { getSinglePost, getAllPostsWithSlug } from "../../lib/api";
+import { getSinglePost, getAllPostsWithSlug, getAllPosts } from "../../lib/api";
 import Footer from "../../components/Footer/Footer";
 import { AnimatePresence, motion } from "framer-motion";
-const BlogPost = ({ post, draftData }) => {
+const BlogPost = ({ post, sliderPosts, draftData }) => {
   const baseUrl = process.env.BASE_URL;
+  let popularPost = sliderPosts.posts.nodes.filter(
+    (postFiltered) => postFiltered.popularArticle.popularArticle == true
+  );
   const thePost = post.post;
   const transformDate = (date) => {
     
@@ -75,6 +78,7 @@ const BlogPost = ({ post, draftData }) => {
         <div className="w-full px-0 border-t border-b border-black sm:px-32">
           <div className="entryImage">
             <Image
+            loading='eager'
               src={
                 thePost.featuredImage
                   ? thePost.featuredImage.node.mediaItemUrl
@@ -175,7 +179,7 @@ const BlogPost = ({ post, draftData }) => {
           {/* <p className='text-right'>Get the latest on tech, business and entrepreneurship</p> */}
         </div>
         <div className="px-4 pt-20 sm:px-32">
-          <TitledSlider></TitledSlider>
+          <TitledSlider popularPost={popularPost}></TitledSlider>
         </div>
       </div>
 
@@ -200,14 +204,16 @@ export default BlogPost;
 // }
 export async function getStaticProps(context) {
   const post = await getSinglePost(context.params.blog);
+  const sliderPosts = await getAllPosts();
   const draftData = context.preview ? context.preview : null;
 
   return {
     props: {
       post,
+      sliderPosts,
       draftData,
     },
-    revalidate: 1, // In seconds
+    
   };
 }
 

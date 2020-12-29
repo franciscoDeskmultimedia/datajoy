@@ -4,9 +4,11 @@ import TwoColImage from '../TwoColImage/TwoColImage';
 import EyeBrowHero from "../Heros/EyeBrowHero";
 import FullImage from '../FullImage/FullImage'
 import EyebrowTitle from '../EyebrowTitle/EyebrowTitle';
-import TwoColPost from '../TwoUpPost/TwoUpPost'
+import TwoColPost from '../TwoUpPost/TwoUpPost';
+import JustTextHero from '../Heros/JustTextHero'
 const PageBuilder = (props) => {
     const pageBuilder = props.page;
+    const modified = props.modified;
     return (
         pageBuilder.map((section, index) => {
             return (
@@ -131,6 +133,27 @@ const PageBuilder = (props) => {
                     author={section.post.author.node.firstName + ' ' + section.post.author.node.lastName}
                     slug={section.post.slug}
                   />
+                 
+                ) : (
+                  ""
+                )}
+
+                {/* IF Just Text Hero  */}
+                {section.fieldGroupName ==
+                "page_Pagebuilder_PageBuilder_JustTextHero" ? (
+                  
+                  <JustTextHero title={section.title} date={modified} />
+                 
+                ) : (
+                  ""
+                )}
+                {/* IF TextBlock  */}
+                {section.fieldGroupName ==
+                "page_Pagebuilder_PageBuilder_TextBlock" ? (
+                  
+                  <div className='w-10/12 px-4 mb-20 lg:px-32 lg:w-8/12'>
+                    <div dangerouslySetInnerHTML={{ __html: section.content}}></div>
+                  </div>
                  
                 ) : (
                   ""

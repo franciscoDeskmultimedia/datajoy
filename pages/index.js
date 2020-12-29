@@ -13,6 +13,7 @@ import Footer from "../components/Footer/Footer";
 
 export default function Home({ page }) {
   const pageBuilder = page ? page.pageBy.pageBuilder.pageBuilder : null;
+  const modified = page ? page.pageBy.modified : null;
   return (
     <>
       <Head>
@@ -27,7 +28,7 @@ export default function Home({ page }) {
         />
       </Head>
       <Navigation />
-      <PageBuilder page={pageBuilder} />
+      <PageBuilder page={pageBuilder} modified={modified}/>
       {/* <GetDemoModal/> */}
       <Footer />
     </>

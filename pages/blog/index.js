@@ -16,6 +16,9 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
   const [chooseCat, setCat] = useState("Uncategorized");
   const allCategories = cat.categories.nodes;
   const pageBuilder = page ? page.pageBy.pageBuilder.pageBuilder : "";
+  let popularPost = posts.posts.nodes.filter(
+    (postFiltered) => postFiltered.popularArticle.popularArticle == true
+  );
   let allPosts = {};
   if (chooseCat != "Uncategorized") {
     allPosts = posts.posts.nodes.filter(
@@ -86,7 +89,8 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
         <div className="flex flex-wrap w-full px-4 mt-20 mb-20 post-1-row sm:px-32 ">
           {allPosts.map((item, index) => {
             if (chooseCat == "Uncategorized") {
-              if (index <= 1) {
+              if (index <= 1 && item.popularArticle.popularArticle != true ) {
+                console.log(item.popularArticle)
                 return (
                   <AnimatePresence key={item.id} exitBeforeEnter={true}>
                     <motion.div
@@ -131,6 +135,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
             } else if (
               index <= 1 &&
               item.categories.nodes[0].name == chooseCat
+              && item.popularArticle.popularArticle != true
             ) {
               return (
                 <AnimatePresence key={item.id} exitBeforeEnter={true}>
@@ -142,11 +147,11 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                     exit={{ opacity: 0 }}
                   >
                     <Image
-                      src={item.featuredImage.node.mediaItemUrl}
-                      width={item.featuredImage.node.mediaDetails.width}
-                      height={item.featuredImage.node.mediaDetails.height}
-                      layout="responsive"
-                    />
+                        src={item.thumbImage.thumbImage ? item.thumbImage.thumbImage.mediaItemUrl : item.featuredImage.node.mediaItemUrl }
+                        width={item.thumbImage.thumbImage ? item.thumbImage.thumbImage.mediaDetails.width : item.featuredImage.node.mediaDetails.width}
+                        height={item.thumbImage.thumbImage ? item.thumbImage.thumbImage.mediaDetails.height : item.featuredImage.node.mediaDetails.height}
+                        layout="responsive"
+                      />
                     <div className="flex items-center pt-6 pb-3">
                       <div className="uppercase rounded-full pill pill-sand">
                         <p className="text-sm">
@@ -182,14 +187,14 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
             <p className='text-right'>Get the latest on tech, business and entrepreneurship</p>
           </div>
           <div className='px-4 pt-20 sm:px-32'>
-            <TitledSlider></TitledSlider>
+            <TitledSlider popularPost={popularPost}></TitledSlider>
           </div>
           
         </div>
 
         <div className={`${allPosts.length < 3 ? 'hidden' : '' } flex flex-wrap w-full px-4 mt-20 mb-20 post-1-row sm:px-32`}>
           {allPosts.map((item, index) => {
-            if (chooseCat == "Uncategorized") {
+            if (chooseCat == "Uncategorized" && item.popularArticle.popularArticle != true && item.popularArticle.popularArticle != true ) {
               if (index >= 2) {
                 return (
                   <AnimatePresence key={item.id} exitBeforeEnter={true}>
@@ -211,6 +216,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         <div className="uppercase rounded-full pill pill-sand">
                           <p className="text-sm">
                             {item.categories.nodes[0].name}
+                            {item.popularArticle.popularArticle}
                           </p>
                         </div>
                         <div>
@@ -236,7 +242,9 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
             } else if (
               index >= 2 &&
               item.categories.nodes[0].name == chooseCat
+              && item.popularArticle.popularArticle != true
             ) {
+              console.log(item.popularArticle.popularArticle)
               return (
                 <AnimatePresence key={item.id} exitBeforeEnter={true}>
                   <motion.div
@@ -247,11 +255,12 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                     exit={{ opacity: 0 }}
                   >
                     <Image
-                      src={item.featuredImage.node.mediaItemUrl}
-                      width={item.featuredImage.node.mediaDetails.width}
-                      height={item.featuredImage.node.mediaDetails.height}
-                      layout="responsive"
-                    />
+                        src={item.thumbImage.thumbImage != null ? item.thumbImage.thumbImage.mediaItemUrl : item.featuredImage.node.mediaItemUrl}
+                        width={item.thumbImage.thumbImage != null ? item.thumbImage.thumbImage.mediaDetails.width : item.featuredImage.node.mediaDetails.width}
+                        height={item.thumbImage.thumbImage != null ? item.thumbImage.thumbImage.mediaDetails.height : item.featuredImage.node.mediaDetails.height}
+                        layout="responsive"
+                        
+                      />
                     <div className="flex items-center pt-6 pb-3">
                       <div className="uppercase rounded-full pill pill-sand">
                         <p className="text-sm">
