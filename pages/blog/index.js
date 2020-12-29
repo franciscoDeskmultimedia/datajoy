@@ -113,7 +113,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                           </p>
                         </div>
                         <div>
-                          <p className="ml-2 text-sm">2 min read</p>
+                          <p className="ml-2 text-sm">{item.readTime.readTime}</p>
                         </div>
                       </div>
                       <Link href={'/blog/' + item.slug}>
@@ -159,7 +159,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         </p>
                       </div>
                       <div>
-                        <p className="ml-2 text-sm">2 min read</p>
+                        <p className="ml-2 text-sm">{item.readTime.readTime}</p>
                       </div>
                     </div>
                     <Link href={'/blog/' + item.slug}>
@@ -220,7 +220,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                           </p>
                         </div>
                         <div>
-                          <p className="ml-2 text-sm">2 min read</p>
+                          <p className="ml-2 text-sm">{item.readTime.readTime}</p>
                         </div>
                       </div>
                       <Link href={'/blog/' + item.slug}>
@@ -268,7 +268,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         </p>
                       </div>
                       <div>
-                        <p className="ml-2 text-sm">2 min read</p>
+                        <p className="ml-2 text-sm">{item.readTime.readTime}</p>
                       </div>
                     </div>
                     <Link href={'/blog/' + item.slug}>

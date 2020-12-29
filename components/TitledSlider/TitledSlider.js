@@ -75,7 +75,7 @@ const TitledSlider = (props) => {
             <p className="text-sm">{popPost[0].categories.nodes[0].name}</p>
           </div>
           <div>
-            <p className="ml-2 text-sm">6 min read</p>
+            <p className="ml-2 text-sm">{popPost[0].readTime.readTime}</p>
           </div>
         </div>
         <Link href={"/blog/" + popPost[0].slug}>
@@ -102,7 +102,7 @@ const TitledSlider = (props) => {
             <p className="text-sm">{popPost[1].categories.nodes[0].name}</p>
           </div>
           <div>
-            <p className="ml-2 text-sm">6 min read</p>
+            <p className="ml-2 text-sm">{popPost[1].readTime.readTime}</p>
           </div>
         </div>
         <Link href={"/blog/" + popPost[1].slug}>
@@ -129,7 +129,7 @@ const TitledSlider = (props) => {
             <p className="text-sm">{popPost[2].categories.nodes[0].name}</p>
           </div>
           <div>
-            <p className="ml-2 text-sm">6 min read</p>
+            <p className="ml-2 text-sm">{popPost[2].readTime.readTime}</p>
           </div>
         </div>
         <Link href={"/blog/" + popPost[2].slug}>
