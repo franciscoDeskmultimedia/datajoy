@@ -5,7 +5,7 @@ import Link from "next/link";
 const TwoColImage = (props) => {
   return (
     <section
-      className={`twocolimage flex flex-wrap ${
+      className={`twocolimage flex flex-wrap border-b border-black ${
         props.reverse == true ? "lg:flex-row-reverse" : "lg:flex-row"
       }`}
     >
@@ -16,7 +16,7 @@ const TwoColImage = (props) => {
       ) : (
         <div
           style={{ backgroundColor: props.backgroundColor }}
-          className="flex items-center justify-center w-full p-16 px-10 py-20 sm:px-20 containImage bg-lightblue-500 lg:w-1/2"
+          className={` ${props.reverse != true ? 'lg:border-r lg:border-black' : ''} flex ${ props.bottomImage ? 'items-end pb-0 px-10 sm:px-12' : 'items-center sm:px-20' }  justify-center w-full  py-20  containImage bg-lightblue-500 lg:w-1/2`}
         >
           <Image
             layout="intrinsic"
@@ -26,7 +26,7 @@ const TwoColImage = (props) => {
           />
         </div>
       )}
-      <div className="flex flex-wrap w-full px-10 py-20 items-betweens sm:px-20 lg:w-1/2">
+      <div className={` ${props.reverse == true ? 'lg:border-r lg:border-black': ''} flex flex-wrap w-full px-10 py-20 items-betweens sm:px-20 lg:w-1/2`}>
         <div className="w-full">
           <h2>{props.title}</h2>
           {props.subtitle ? <div className='hidden subtitle-desk lg:block'>{props.subtitle}</div> : null}

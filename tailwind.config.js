@@ -57,8 +57,9 @@ module.exports = {
         },
       },
       fontSize: {
-        h1: "80px",
+        h1: "72px",
         h2: "48px",
+        "6.5xl" : "4.5rem",
         "7xl": "5rem",
         "3.5xl": "2rem",
       },

@@ -3,7 +3,7 @@ import Image from 'next/image'
 const HeroOne = (props) => {
     return (
       <section className="px-4 pt-10 pb-24 md:px-32 simple-hero">
-        <h1 className="mb-2 font-normal text-right ">{props.title}</h1>
+        <h1 className={`mb-2 font-normal text-left ${!props.subtitle ? 'mb-20' : 'mb-2'  } `}>{props.title}</h1>
         <Image
           className="w-full "
           layout="responsive"
@@ -14,6 +14,9 @@ const HeroOne = (props) => {
         <h2 className="w-2/3 max-w-screen-sm mt-5 font-normal">
           {props.subtitle}
         </h2>
+        <div className='flex justify-end ' >
+          <div className='w-full lg:w-2/5' dangerouslySetInnerHTML={{ __html: props.copy}}></div>
+        </div>
       </section>
     );
 }

@@ -5,7 +5,11 @@ import EyeBrowHero from "../Heros/EyeBrowHero";
 import FullImage from '../FullImage/FullImage'
 import EyebrowTitle from '../EyebrowTitle/EyebrowTitle';
 import TwoColPost from '../TwoUpPost/TwoUpPost';
-import JustTextHero from '../Heros/JustTextHero'
+import JustTextHero from '../Heros/JustTextHero';
+import CenteredFullImageHero from '../Heros/CenteredFullImageHero';
+import TwoColLogos from '../TwoColLogos/TwoColLogos';
+import EyeBrowTextCentered from '../EyeBrowTextCentered/EyeBrowTextCentered';
+
 const PageBuilder = (props) => {
     const pageBuilder = props.page;
     const modified = props.modified;
@@ -23,6 +27,7 @@ const PageBuilder = (props) => {
                     imageSrc={section.image.mediaItemUrl}
                     imageWidth={section.image.mediaDetails.width}
                     imageHeight={section.image.mediaDetails.height}
+                    copy={section.copy}
                   />
                   
                 ) : (
@@ -63,6 +68,7 @@ const PageBuilder = (props) => {
                     mobileSubtitle={section.textContainer.mobileSubtitle}
                     text={section.textContainer.copy}
                     fullImage={section.imageCol.fullImage}
+                    bottomImage = {section.imageCol.bottomImage}
                     imageSrc={section.imageCol.image.mediaItemUrl}
                     imageWidth={section.imageCol.image.mediaDetails.width}
                     imageHeight={section.imageCol.image.mediaDetails.height}
@@ -154,6 +160,48 @@ const PageBuilder = (props) => {
                   <div className='w-10/12 px-4 mb-20 lg:px-32 lg:w-8/12'>
                     <div dangerouslySetInnerHTML={{ __html: section.content}}></div>
                   </div>
+                 
+                ) : (
+                  ""
+                )}
+                {/* IF Hero Centered full Image  */}
+                {section.fieldGroupName ==
+                "page_Pagebuilder_PageBuilder_CenteredFullImageHero" ? (
+                  
+                  <CenteredFullImageHero
+                    title={section.title}
+                    subtitle={section.subtitle}
+                    fullImage={section.fullImage}
+                    imageSrc={section.image.mediaItemUrl}
+                    imageWidth={section.image.mediaDetails.width}
+                    imageHeight={section.image.mediaDetails.height}
+                  />
+                 
+                ) : (
+                  ""
+                )}
+                {/* IF Hero Centered full Image  */}
+                {section.fieldGroupName ==
+                "page_Pagebuilder_PageBuilder_TwoColLogos" ? (
+                  
+                  <TwoColLogos
+                    title={section.title}
+                    logos={section.logos}
+                  />
+                 
+                ) : (
+                  ""
+                )}
+                {/* IF Eyebrow centered text  */}
+                {section.fieldGroupName ==
+                "page_Pagebuilder_PageBuilder_EyebrowTextCentered" ? (
+                  
+                  <EyeBrowTextCentered
+                    title={section.title}
+                    eyebrow={section.eyebrow}
+                    backgroundColor={section.backgroundColor}
+                    textColor={section.textColor}
+                  />
                  
                 ) : (
                   ""

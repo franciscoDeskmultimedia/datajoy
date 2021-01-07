@@ -1,6 +1,7 @@
 import Image from "next/image";
 import PrimaryButton from '../Buttons/PrimaryButton'; 
 import { useState } from "react";
+import Link from 'next/link';
 const Footer = () => {
   const [nameInput, setNameActive] = useState(false);
   const [emailInput, setEmailActive] = useState(false);
@@ -47,7 +48,7 @@ const Footer = () => {
           <div className="w-full sm:w-2/5">
             <form autoComplete="off" className="">
             <div className={`relative inputName ${nameInput ? "active" : ""}`}>
-              <label className="absolute text-white top">Name:</label>
+              <label className="absolute text-white top">Name</label>
               <input
                 className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
                 id="name"
@@ -62,7 +63,7 @@ const Footer = () => {
             <div
               className={`relative inputEmail ${emailInput ? "active" : ""}`}
             >
-              <label className="absolute text-white top">Email:</label>
+              <label className="absolute text-white top">Work email</label>
               <input
                 className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
                 id="email"
@@ -79,7 +80,7 @@ const Footer = () => {
                 companyInput ? "active" : ""
               }`}
             >
-              <label className="absolute text-white top">Company Name:</label>
+              <label className="absolute text-white top">Company name</label>
               <input
                 className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
                 id="companyName"
@@ -96,7 +97,7 @@ const Footer = () => {
                 companySizeInput ? "active" : ""
               }`}
             >
-              <label className="absolute text-white top">Company Size:</label>
+              <label className="absolute text-white top">Company size:</label>
               <select
                 className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
                 id="companySize"
@@ -113,7 +114,7 @@ const Footer = () => {
               </select>
             </div>
 
-            <select
+            {/* <select
               className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
               id="category"
               aria-label="email address"
@@ -122,10 +123,10 @@ const Footer = () => {
               <option value="default">Category</option>
               <option value="1">Marketing</option>
               <option value="2-5">Real estate</option>
-            </select>
+            </select> */}
             <p className="py-5 text-xs ">
-              By signing up, I agree to Datajoy’s privacy policy & terms of
-              service.
+              By signing up, I agree to Datajoy’s <span className='underline '><Link href='/privacy-policy'>privacy policy</Link></span> & <span className='underline '><Link href='/cookie-policy'>terms of
+              service</Link></span>.
             </p>
             {/* <button
                 className="p-2 text-white duration-300 bg-blue-600 rounded-r shadow hover:bg-blue-700"
