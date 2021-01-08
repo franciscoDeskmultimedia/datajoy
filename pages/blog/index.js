@@ -19,6 +19,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
   let popularPost = posts.posts.nodes.filter(
     (postFiltered) => postFiltered.popularArticle.popularArticle == true
   );
+  console.log('los posts : ' + popularPost.length);
   let allPosts = {};
   if (chooseCat != "Uncategorized") {
     allPosts = posts.posts.nodes.filter(

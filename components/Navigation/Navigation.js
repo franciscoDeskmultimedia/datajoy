@@ -15,7 +15,7 @@ const Navigation = () => {
       setMobile(false);
     }
     function handleResize() {
-      console.log(window.innerWidth);
+      // console.log(window.innerWidth);
       if (window.innerWidth < 1024) {
         setMobile(true);
       } else {
@@ -147,7 +147,7 @@ const Navigation = () => {
         </div>
         <div>
           {/* <PrimaryButton linkName='Get beta' url='#'/> */}
-          <Link href={`#`}>
+          <Link href={`/getbeta`}>
             <a 
               onClick={()=>setActive(false)}
               style={{ color: "white" }}

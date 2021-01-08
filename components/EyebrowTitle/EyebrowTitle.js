@@ -5,7 +5,7 @@ import Link from "next/link";
 const EyebrowTitle = (props) => {
   return (
     <section
-      className="px-10 sm:px-32"
+      className="px-4 lg:px-32"
       style={{
         backgroundColor: props.bgColor ? props.bgColor : "white",
         color: props.textColor ? props.textColor : "black",
@@ -55,7 +55,7 @@ const EyebrowTitle = (props) => {
             {props.content ? (
               <div className="w-full mt-10 ">
                 <div
-                  className="w-full pl-10 textContent sm:pl-0"
+                  className="w-full textContent "
                   dangerouslySetInnerHTML={{ __html: props.content }}
                 ></div>
               </div>

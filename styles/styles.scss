@@ -7,12 +7,12 @@
 .slick-list, .slick-track { touch-action:pan-y; }
 h1 {
   @apply text-5xl;
-  line-height: 110%;
+  line-height: 111%;
   letter-spacing: -0.01em;
 }
 h2 {
   @apply text-3.5xl;
-  line-height: 112%;
+  line-height: 125%;
   letter-spacing: -0.01em;
 }
 h3 {
@@ -26,7 +26,7 @@ p {
   line-height: 140%;
   letter-spacing: -0.01em;
 }
-@screen sm {
+@screen lg {
   h1 {
     @apply text-6.5xl;
     line-height: 110%;
@@ -34,7 +34,7 @@ p {
   }
   h2 {
     @apply text-5xl;
-    line-height: 112%;
+    line-height: 125%;
     letter-spacing: -0.01em;
   }
   h3 {
@@ -75,19 +75,29 @@ p {
 }
 ol {
   counter-reset: my-awesome-counter;
+  @apply px-8;
+  @screen lg {
+    @apply px-0
+  }
   li {
     counter-increment: my-awesome-counter;
     @apply text-3.5xl relative mb-16;
     &:before {
       content: "0" counter(my-awesome-counter);
-      @apply text-xl absolute h-16 pb-1 flex items-end;
+      @apply text-xl absolute h-16 pt-1 flex items-start;
       content: "0" counter(my-awesome-counter);
       position: absolute;
       left: -34px;
       top: 0px;
     }
-    @screen sm {
+    @screen lg {
       @apply text-5xl relative mb-16;
+      
+        &:before {
+          @apply text-xl absolute h-16 pb-1 flex items-end 
+        }
+      
+      
     }
   }
 }
@@ -188,7 +198,8 @@ select:focus {
 .getBeta-overlay .inputName,
 .getBeta-overlay .inputEmail,
 .getBeta-overlay .inputCompanyName,
-.getBeta-overlay .inputCompanySize {
+.getBeta-overlay .inputCompanySize,
+.getBeta-overlay .inputCompanyCategory {
   &.active {
     label {
       top: 0px;
@@ -219,7 +230,8 @@ input:-webkit-autofill:active {
 .footer .inputName,
 .footer .inputEmail,
 .footer .inputCompanyName,
-.footer .inputCompanySize {
+.footer .inputCompanySize,
+.footer .inputCompanyCategory {
   &.active {
     label {
       top: 0px;
