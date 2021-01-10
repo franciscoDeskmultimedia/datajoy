@@ -277,4 +277,10 @@ input:-webkit-autofill:active {
 .slick-slide {
   outline: none
 }
+.doubled-content {
+  @apply flex flex-wrap;
+  p{
+    @apply w-1/2 pb-4 pr-4
+  }
+}
 @import "~tailwindcss/utilities";
