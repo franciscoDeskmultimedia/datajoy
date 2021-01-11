@@ -12,7 +12,7 @@ import EyeBrowTextCentered from '../EyeBrowTextCentered/EyeBrowTextCentered';
 
 const PageBuilder = (props) => {
     const pageBuilder = props.page;
-    const modified = props.modified;
+    const modified = props.modified ? props.modified : null;
     return (
         pageBuilder.map((section, index) => {
             return (
