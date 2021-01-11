@@ -9,7 +9,7 @@ const PageBuilderContent = ({ page, draftData, previewData }) => {
   // console.log('dataDraft' + draftData);
   // console.log('preview data : ' + previewData.post.id + ' slug : ' + previewData.post.slug + ' post status: ' + previewData.post.status )
   const pageBuilder = page.pageBy != null ? page.pageBy.pageBuilder.pageBuilder : "";
-  const modified = page ? page.pageBy.modified : null;
+  const modified = page.status != 'publish' ? new Date()  : page.pageBy.modified;
   return (
     <>
       <Head>
