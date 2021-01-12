@@ -12,8 +12,8 @@ import GetDemoModal from '../components/GetDemoModal/GetDemoModal'
 import Footer from "../components/Footer/Footer";
 
 export default function Home({ page }) {
-  const pageBuilder = page ? page.pageBy.pageBuilder.pageBuilder : null;
-  const modified = page ? page.pageBy.modified : null;
+  const pageBuilder = page ? page.page.pageBuilder.pageBuilder : null;
+  const modified = page ? page.page.modified : null;
   return (
     <>
       <Head>
@@ -29,21 +29,36 @@ export default function Home({ page }) {
       </Head>
       <Navigation />
       <PageBuilder page={pageBuilder} modified={modified}/>
+      
       {/* <GetDemoModal/> */}
       <Footer />
     </>
   );
 }
 
-export async function getServerSideProps(context) {
-  const page = await getPageBuilder("home");
-  const draftData = context.preview ? context.preview : null;
-  // const previewData = context.previewData;
+// export async function getServerSideProps({params, preview = false, previewData}) {
+//   const page = await getPageBuilder('home', preview, previewData);
+//   const draftData = previewData ? previewData : null;
+//   // const previewData = context.previewData;
+//   return {
+//     props: {
+//       page,
+//       draftData,
+//       // previewData
+//     },
+//   };
+// }
+
+export async function getStaticProps(context) {
+  const page = await getPageBuilder('home', context.preview = false , context.previewData);
+  const draftData = context.previewData ? context.previewData.slug : null ;
+
   return {
     props: {
       page,
       draftData,
-      // previewData
     },
-  };
+  }
 }
+
+

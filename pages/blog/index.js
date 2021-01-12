@@ -15,7 +15,7 @@ import { AnimatePresence, motion } from "framer-motion";
 const Blog = ({ page, posts, cat, draftData, previewData }) => {
   const [chooseCat, setCat] = useState("Uncategorized");
   const allCategories = cat.categories.nodes;
-  const pageBuilder = page ? page.pageBy.pageBuilder.pageBuilder : "";
+  const pageBuilder = page ? page.page.pageBuilder.pageBuilder : "";
   let popularPost = posts.posts.nodes.filter(
     (postFiltered) => postFiltered.popularArticle.popularArticle == true
   );
@@ -61,7 +61,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
         />
       </Head>
       <Navigation />
-      {page.pageBy.status == "publish" || draftData == true ? (
+      {page.page.status == "publish" || draftData == true ? (
         <PageBuilder page={pageBuilder} />
       ) : (
         <h1>Post under construction</h1>
@@ -315,11 +315,11 @@ export default Blog;
 //   };
 // }
 
-export async function getStaticProps(context) {
-    const page = await getPageBuilder("blog");
+export async function getStaticProps({params, preview = false, previewData}) {
+    const page = await getPageBuilder("blog", preview, previewData);
     const posts = await getAllPosts();
     const cat = await getAllCategories();
-    const draftData = context.preview ? context.preview : null;
+    const draftData = preview ? preview : null;
 
   return {
     props: {

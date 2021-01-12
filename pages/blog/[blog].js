@@ -7,12 +7,14 @@ import TitledSlider from "../../components/TitledSlider/TitledSlider";
 import { getSinglePost, getAllPostsWithSlug, getAllPosts } from "../../lib/api";
 import Footer from "../../components/Footer/Footer";
 import { AnimatePresence, motion } from "framer-motion";
+
 const BlogPost = ({ post, sliderPosts, draftData }) => {
   // const baseUrl = process.env.BASE_URL;
   const baseUrl = 'https://datajoy.vercel.app'
   let popularPost = sliderPosts.posts.nodes.filter(
     (postFiltered) => postFiltered.popularArticle.popularArticle == true
   );
+  console.log('draft' + draftData)
   const thePost = post.post;
   const transformDate = (date) => {
     
@@ -192,12 +194,14 @@ export default BlogPost;
 
 // export async function getServerSideProps(context) {
 //   const post = await getSinglePost(context.params.blog);
+//   const sliderPosts = await getAllPosts();
 //   const draftData = context.preview ? context.preview : null;
 
 //   // const previewData = context.previewData;
 //   return {
 //     props: {
 //       post,
+//       sliderPosts,
 //       draftData,
 //       // previewData
 //     },
