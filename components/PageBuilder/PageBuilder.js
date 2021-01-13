@@ -158,7 +158,7 @@ const PageBuilder = (props) => {
                 "page_Pagebuilder_PageBuilder_TextBlock" ? (
                   
                   <div className='w-10/12 px-4 mb-20 lg:px-32 lg:w-8/12'>
-                    <div dangerouslySetInnerHTML={{ __html: section.content}}></div>
+                    <div className='textBlock' dangerouslySetInnerHTML={{ __html: section.content}}></div>
                   </div>
                  
                 ) : (

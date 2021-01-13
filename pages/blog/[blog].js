@@ -14,7 +14,7 @@ const BlogPost = ({ post, sliderPosts, draftData }) => {
   let popularPost = sliderPosts.posts.nodes.filter(
     (postFiltered) => postFiltered.popularArticle.popularArticle == true
   );
-  console.log('draft' + draftData)
+  // console.log('draft' + draftData)
   const thePost = post.post;
   const transformDate = (date) => {
     

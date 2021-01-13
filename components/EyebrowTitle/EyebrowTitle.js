@@ -5,7 +5,7 @@ import Link from "next/link";
 const EyebrowTitle = (props) => {
   return (
     <section
-      className="px-4 lg:px-32"
+      className="px-4 lg:px-32 eyebrowTitle"
       style={{
         backgroundColor: props.bgColor ? props.bgColor : "white",
         color: props.textColor ? props.textColor : "black",
@@ -13,7 +13,7 @@ const EyebrowTitle = (props) => {
     >
       {props.linkedTitle ? (
         <div className="flex flex-wrap py-20">
-          <p className="flex items-end w-full h-20 pb-1 pr-4 eyebrow lg:w-1/12">{props.eyebrow}</p>
+          <p className="flex items-end w-full h-20 pb-2 pr-4 eyebrow lg:w-1/12">{props.eyebrow}</p>
           <div className="sm:11/12">
             <Link href={props.url.replace(process.env.WORDPRESS_BASE_URL, "")}>
               <a className="flex flex-wrap items-end ">
@@ -49,7 +49,7 @@ const EyebrowTitle = (props) => {
         </div>
       ) : (
         <div className="flex flex-wrap py-20">
-          <p className="flex items-end w-full h-20 pb-1 pr-4 eyebrow lg:w-2/12">{props.eyebrow}</p>
+          <p className="flex items-end w-full h-20 pb-2 pr-4 eyebrow lg:w-2/12">{props.eyebrow}</p>
           <div className="lg:w-10/12">
             <h1 className="w-full sm:w-auto">{props.title}</h1>
             {props.content ? (

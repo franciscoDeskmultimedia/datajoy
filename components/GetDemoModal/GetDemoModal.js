@@ -37,7 +37,7 @@ const GetDemoModal = (props) => {
   };
   return (
     <section className="fixed top-0 left-0 z-50 flex items-center w-full h-full bg-white getBeta-overlay ">
-      <div className="absolute modalClose">
+      {/* <div className="absolute modalClose">
         <a className="cursor-pointer " onClick={() => router.back()}>
           <svg
             width="20"
@@ -52,7 +52,7 @@ const GetDemoModal = (props) => {
             />
           </svg>
         </a>
-      </div>
+      </div> */}
       <div className="flex flex-wrap items-center h-full">
         <div className="h-full px-4 py-6 bg-white lg:px-32 lg:py-20 lg:w-1/2">
           <div className="mb-10">
@@ -63,16 +63,18 @@ const GetDemoModal = (props) => {
               <Image src="/datajoy-logo.png" width="111" height="32" />
             </a>
           </div>
-          <h3 className="mb-5">Can we help you grow?</h3>
+          <h3 className="mb-2">Can we help you grow?</h3>
           <p className="mb-8 ">
-            We are currently accepting closed beta customers. Fill out the form
-            below and we’ll asses if there’s a good fit.
+            We’re accepting closed beta customers. Sign up now to join the
+            waitlist.
           </p>
           <form className="">
-            <div className={`relative inputName ${nameInput ? "active" : ""}`}>
+            <div
+              className={`relative inputName ${nameInput ? "active" : ""} mb-1`}
+            >
               <label className="absolute top">Name</label>
               <input
-                className="w-full p-4 px-0 font-light text-black placeholder-black bg-white border-b border-black"
+                className="w-full p-4 px-0 pb-2 font-light text-black placeholder-black bg-white border-b border-black"
                 id="name"
                 type="text"
                 aria-label="Name"
@@ -83,11 +85,13 @@ const GetDemoModal = (props) => {
             </div>
 
             <div
-              className={`relative inputEmail ${emailInput ? "active" : ""}`}
+              className={`relative inputEmail ${
+                emailInput ? "active" : ""
+              } mb-1`}
             >
               <label className="absolute top">Email</label>
               <input
-                className="w-full p-4 px-0 font-light text-black placeholder-black bg-white border-b border-black"
+                className="w-full p-4 px-0 pb-2 text-2xl font-light text-black placeholder-black bg-white border-b border-black "
                 id="email"
                 type="email"
                 aria-label="email address"
@@ -100,11 +104,11 @@ const GetDemoModal = (props) => {
             <div
               className={`relative inputCompanyName ${
                 companyInput ? "active" : ""
-              }`}
+              } mb-1`}
             >
               <label className="absolute top">Company Name</label>
               <input
-                className="w-full p-4 px-0 font-light text-black placeholder-black bg-white border-b border-black"
+                className="w-full p-4 px-0 pb-2 text-2xl font-light text-black placeholder-black bg-white border-b border-black "
                 id="companyName"
                 type="text"
                 aria-label="Company Name"
@@ -117,11 +121,11 @@ const GetDemoModal = (props) => {
             <div
               className={`relative inputCompanySize ${
                 companySizeInput ? "active" : ""
-              }`}
+              } mb-1`}
             >
               <label className="absolute top">Company Size</label>
               <select
-                className="w-full p-4 px-0 font-light text-black placeholder-black bg-white border-b border-black"
+                className="w-full p-4 px-0 pb-2 text-2xl font-light text-black placeholder-black bg-white border-b border-black "
                 id="companySize"
                 aria-label="email address"
                 onFocus={() => toggleLabel("companySize")}
@@ -135,34 +139,34 @@ const GetDemoModal = (props) => {
                 <option value="11+">11+</option>
               </select>
             </div>
-            <div
+            {/* <div
               className={`relative inputCompanyCategory ${
                 companyCategoryInput ? "active" : ""
-              }`}
+              } mb-1`}
             >
               <label className="absolute top">Company category</label>
               <select
-                className="w-full p-4 px-0 font-light text-black placeholder-black bg-white border-b border-black"
+                className="w-full p-4 px-0 pb-2 text-2xl font-light text-black placeholder-black bg-white border-b border-black "
                 id="companyCategory"
                 aria-label="email address"
                 onFocus={() => toggleLabel("companyCategory")}
                 onBlur={() => toggleLabel("companyCategory")}
-                // placeholder="Enter your email address"
               >
                 <option defaultValue value="default"></option>
                 <option value="1">Marketing</option>
                 <option value="2-5">Real estate</option>
               </select>
-            </div>
+            </div> */}
             <p className="py-5 text-xs ">
-            By signing up, I agree to Datajoy’s{" "}
-                <span className="underline ">
-                  <Link href="/privacy-policy">privacy policy</Link>
-                </span>{" "}
-                &{" "}
-                <span className="underline ">
-                  <Link href="/cookie-policy">terms of service</Link>
-                </span>.
+              By signing up, I agree to Datajoy’s{" "}
+              <span className="underline ">
+                <Link href="/privacy-policy">privacy policy</Link>
+              </span>{" "}
+              &{" "}
+              <span className="underline ">
+                <Link href="/cookie-policy">terms of service</Link>
+              </span>
+              .
             </p>
             {/* <button
                 className="p-2 text-white duration-300 bg-blue-600 rounded-r shadow hover:bg-blue-700"

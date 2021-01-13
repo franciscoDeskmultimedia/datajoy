@@ -51,11 +51,11 @@ const Footer = () => {
           <div className="w-full pt-10 sm:pt-0 sm:w-2/5">
             <form autoComplete="off" className="max-w-2xl ">
               <div
-                className={`relative inputName ${nameInput ? "active" : ""}`}
+                className={`relative inputName ${nameInput ? "active" : ""} mb-1`}
               >
                 <label className="absolute text-white top">Name</label>
                 <input
-                  className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
+                  className="w-full p-4 px-0 pb-2 text-2xl font-light text-white placeholder-white bg-transparent border-b border-white"
                   id="name"
                   type="text"
                   aria-label="Name"
@@ -66,11 +66,11 @@ const Footer = () => {
               </div>
 
               <div
-                className={`relative inputEmail ${emailInput ? "active" : ""}`}
+                className={`relative inputEmail ${emailInput ? "active" : ""} mb-1`}
               >
                 <label className="absolute text-white top">Work email</label>
                 <input
-                  className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
+                  className="w-full p-4 px-0 pb-2 text-2xl font-light text-white placeholder-white bg-transparent border-b border-white "
                   id="email"
                   type="email"
                   aria-label="email address"
@@ -83,11 +83,11 @@ const Footer = () => {
               <div
                 className={`relative inputCompanyName ${
                   companyInput ? "active" : ""
-                }`}
+                } mb-1`}
               >
                 <label className="absolute text-white top">Company name</label>
                 <input
-                  className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
+                  className="w-full p-4 px-0 pb-2 text-2xl font-light text-white placeholder-white bg-transparent border-b border-white "
                   id="companyName"
                   type="text"
                   aria-label="Company Name"
@@ -100,11 +100,11 @@ const Footer = () => {
               <div
                 className={`relative inputCompanySize ${
                   companySizeInput ? "active" : ""
-                }`}
+                } mb-1`}
               >
-                <label className="absolute text-white top">Company size:</label>
+                <label className="absolute text-white top">Company size</label>
                 <select
-                  className="w-full p-4 px-0 font-light text-white placeholder-white bg-transparent border-b border-white"
+                  className="w-full p-4 px-0 pb-2 text-2xl font-light text-white placeholder-white bg-transparent border-b border-white "
                   id="companySize"
                   aria-label="email address"
                   onFocus={() => toggleLabel("companySize")}

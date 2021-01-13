@@ -97,7 +97,7 @@ const Navigation = () => {
             </a>
           </Link>
           <Link href="/blog">
-            <a className="block mt-4 mr-4 text-white sm:text-black lg:inline-block lg:mt-0 hover:text-gray">
+            <a className="block mt-4 mr-5 text-white sm:text-black lg:inline-block lg:mt-0 hover:text-gray">
               Blog
             </a>
           </Link>
@@ -144,9 +144,18 @@ const Navigation = () => {
               Blog
             </a>
           </Link>
+          <Link href={`/getbeta`}>
+            <a 
+              onClick={()=>setActive(false)}
+              style={{ color: "white" }}
+              className={`block w-full mt-4 mr-4 text-5xl text-white lg:inline-block lg:mt-0 hover:text-gray`}
+            >
+              <span className="mr-4">Get beta</span>
+              
+            </a>
+          </Link>
         </div>
-        <div>
-          {/* <PrimaryButton linkName='Get beta' url='#'/> */}
+        {/* <div>
           <Link href={`/getbeta`}>
             <a 
               onClick={()=>setActive(false)}
@@ -170,7 +179,7 @@ const Navigation = () => {
               </span>
             </a>
           </Link>
-        </div>
+        </div> */}
       </motion.div>
     </nav>
   );

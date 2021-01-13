@@ -6,7 +6,7 @@ import PageBuilder from "../components/PageBuilder/PageBuilder";
 import Footer from "../components/Footer/Footer";
 
 const PageBuilderContent = ({ page, draftData, previewDatas }) => {
-  console.log('params : ' + page.status );
+  // console.log('params : ' + page.status );
   // console.log('preview data : ' + previewDatas.post.slug + ' slug : ' + previewDatas.post.slug + ' post status: ' + previewDatas.post.status )
   const pageBuilder = page.page != null ? page.page.pageBuilder.pageBuilder : "";
   const modified = page.status != 'publish' ? new Date()  : page.page.modified;

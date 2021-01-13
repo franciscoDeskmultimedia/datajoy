@@ -81,20 +81,22 @@ ol {
   }
   li {
     counter-increment: my-awesome-counter;
-    @apply text-3.5xl relative mb-16;
+    @apply text-3.5xl relative mb-4;
     &:before {
       content: "0" counter(my-awesome-counter);
       @apply text-xl absolute h-16 pt-1 flex items-start;
       content: "0" counter(my-awesome-counter);
       position: absolute;
       left: -34px;
-      top: 0px;
+      top: 7px;
     }
     @screen lg {
-      @apply text-5xl relative mb-16;
+      @apply text-5xl relative mb-4;
       
         &:before {
-          @apply text-xl absolute h-16 pb-1 flex items-end 
+          @apply text-xl absolute h-16 pb-1 flex items-end;
+          left:-45px;
+          top: 0px;
         }
       
       
@@ -202,7 +204,7 @@ select:focus {
 .getBeta-overlay .inputCompanyCategory {
   &.active {
     label {
-      top: 0px;
+      top: -3px;
       left: 0px;
       color: black;
       transform: translateY(0%) scale(0.8);
@@ -234,7 +236,7 @@ input:-webkit-autofill:active {
 .footer .inputCompanyCategory {
   &.active {
     label {
-      top: 0px;
+      top: -3px;
       left: 0px;
       color: white;
       transform: translateY(0%) scale(0.8);
@@ -282,5 +284,14 @@ input:-webkit-autofill:active {
   p{
     @apply w-1/2 pb-4 pr-4
   }
+}
+.centeredImage{
+  @screen lg {
+    height: 540px;
+  }
+  height: 346px;
+}
+.textBlock a {
+  text-decoration: underline;
 }
 @import "~tailwindcss/utilities";
