@@ -47,6 +47,8 @@ const Footer = () => {
           </div> */}
           <div className="w-full sm:w-3/5">
             <h1 className="w-full max-w-lg ">Can we help you grow?</h1>
+            <p className='pt-5'>We're accepting closed beta customers.</p>
+            <p>Sign up now to join the waitlist.</p>
           </div>
           <div className="w-full pt-10 sm:pt-0 sm:w-2/5">
             <form autoComplete="off" className="max-w-2xl ">

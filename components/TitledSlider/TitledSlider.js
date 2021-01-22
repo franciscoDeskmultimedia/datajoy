@@ -71,7 +71,7 @@ const TitledSlider = (props) => {
           />
         </div>
         <div className="flex items-center pt-8 pb-3">
-          <div className="uppercase rounded-full pill pill-sand">
+          <div className="capitalize rounded-full pill pill-sand">
             <p className="text-sm">{popPost[0].categories.nodes[0].name}</p>
           </div>
           <div>
@@ -98,7 +98,7 @@ const TitledSlider = (props) => {
           />
         </div>
         <div className="flex items-center pt-8 pb-3">
-          <div className="uppercase rounded-full pill pill-sand">
+          <div className="capitalize rounded-full  pill pill-sand">
             <p className="text-sm">{popPost[1].categories.nodes[0].name}</p>
           </div>
           <div>
@@ -125,7 +125,7 @@ const TitledSlider = (props) => {
           />
         </div>
         <div className="flex items-center pt-8 pb-3">
-          <div className="uppercase rounded-full pill pill-sand">
+          <div className="capitalize rounded-full pill pill-sand">
             <p className="text-sm">{popPost[2].categories.nodes[0].name}</p>
           </div>
           <div>

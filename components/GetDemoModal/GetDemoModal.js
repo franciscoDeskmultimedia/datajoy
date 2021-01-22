@@ -17,7 +17,7 @@ const GetDemoModal = (props) => {
     const emailVal = document.getElementById("email").value;
     const companyNameVal = document.getElementById("companyName").value;
     const companySizeVal = document.getElementById("companySize").value;
-    const companyCategoryVal = document.getElementById("companyCategory").value;
+    // const companyCategoryVal = document.getElementById("companyCategory").value;
 
     if (el == "name" && nameVal == "") {
       setNameActive(!nameInput);
@@ -72,7 +72,7 @@ const GetDemoModal = (props) => {
             <div
               className={`relative inputName ${nameInput ? "active" : ""} mb-1`}
             >
-              <label className="absolute top">Name</label>
+              <label className="absolute text-black top">Name</label>
               <input
                 className="w-full p-4 px-0 pb-2 font-light text-black placeholder-black bg-white border-b border-black"
                 id="name"

@@ -138,6 +138,7 @@ const PageBuilder = (props) => {
                     date={section.post.date}
                     author={section.post.author.node.firstName + ' ' + section.post.author.node.lastName}
                     slug={section.post.slug}
+                    readtime={section.post.readTime.readTime}
                   />
                  
                 ) : (

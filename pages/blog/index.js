@@ -19,14 +19,19 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
   let popularPost = posts.posts.nodes.filter(
     (postFiltered) => postFiltered.popularArticle.popularArticle == true
   );
+  let featuredPost = posts.posts.nodes.filter(
+    (postFiltered) => postFiltered.featuredArticle.featuredArticle == true
+  );
   // console.log('los posts : ' + popularPost.length);
   let allPosts = {};
   if (chooseCat != "Uncategorized") {
     allPosts = posts.posts.nodes.filter(
-      (postFiltered) => postFiltered.categories.nodes[0].name == chooseCat && postFiltered.popularArticle.popularArticle != true
+      (postFiltered) => postFiltered.categories.nodes[0].name == chooseCat && postFiltered.popularArticle.popularArticle != true && postFiltered.featuredArticle.featuredArticle != true
     );
   } else {
-    allPosts = posts.posts.nodes;
+    allPosts = posts.posts.nodes.filter(
+      (postFiltered) => postFiltered.featuredArticle.featuredArticle != true
+    );
   }
   const transformDate = (date) => {
     const d = new Date(date);
@@ -61,11 +66,34 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
         />
       </Head>
       <Navigation />
-      {page.page.status == "publish" || draftData == true ? (
+      {/* {page.page.status == "publish" || draftData == true ? (
         <PageBuilder page={pageBuilder} />
       ) : (
         <h1>Post under construction</h1>
-      )}
+      )} */}
+      <section className="flex flex-wrap items-center bg-black twoUpPost">
+      <div className="order-2 w-full py-20 pl-4 pr-10 text-white bg-black lg:pl-32 sm:pl-24 lg:order-none twoUpPostContent lg:w-1/2">
+        <div className='flex items-center w-full'>
+          <div className="mr-5 capitalize rounded-full pill pill-white">
+            <p className='text-sm'>{featuredPost[0].categories.nodes[0].name}</p>
+          </div>
+          <div className="readTime">
+            <p className='text-sm'>{featuredPost[0].readTime.readTime}</p>
+          </div>
+        </div>
+        <div className='w-full mt-4'>
+          <Link href={'/blog/' + featuredPost[0].slug}>
+          <h2 className='max-w-lg cursor-pointer '>{featuredPost[0].title}</h2>
+          </Link>
+        </div>
+        <div className='w-full mt-5 author'>
+            <p>By {featuredPost[0].author.node.firstName} {featuredPost[0].author.node.lastName} . <span>{transformDate(featuredPost[0].date)}</span></p>
+        </div>
+      </div>
+      <div className="relative order-1 w-full lg:order-none twoUpPostImage lg:w-1/2">
+        <Image className='object-cover' src={featuredPost[0].featuredImage.node.mediaItemUrl} layout="fill" />
+      </div>
+    </section>
       <section>
         <div className="flex flex-row-reverse justify-center w-full py-12 border-b border-black">
           {allCategories.map((item, index) => (
@@ -108,7 +136,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         layout="responsive"
                       />
                       <div className="flex items-center pt-6 pb-3">
-                        <div className="uppercase rounded-full pill pill-sand">
+                        <div className="capitalize rounded-full  pill pill-sand">
                           <p className="text-sm">
                             {item.categories.nodes[0].name}
                           </p>
@@ -154,7 +182,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         layout="responsive"
                       />
                     <div className="flex items-center pt-6 pb-3">
-                      <div className="uppercase rounded-full pill pill-sand">
+                      <div className="capitalize rounded-full  pill pill-sand">
                         <p className="text-sm">
                           {item.categories.nodes[0].name}
                         </p>
@@ -214,7 +242,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         
                       />
                       <div className="flex items-center pt-6 pb-3">
-                        <div className="uppercase rounded-full pill pill-sand">
+                        <div className="capitalize rounded-full  pill pill-sand">
                           <p className="text-sm">
                             {item.categories.nodes[0].name}
                             {item.popularArticle.popularArticle}
@@ -263,7 +291,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         
                       />
                     <div className="flex items-center pt-6 pb-3">
-                      <div className="uppercase rounded-full pill pill-sand">
+                      <div className="capitalize rounded-full  pill pill-sand">
                         <p className="text-sm">
                           {item.categories.nodes[0].name}
                         </p>

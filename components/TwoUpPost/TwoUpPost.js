@@ -18,7 +18,7 @@ const TwoUpPost = (props) => {
             <p className='text-sm'>{props.category}</p>
           </div>
           <div className="readTime">
-            <p className='text-sm'>2 min read</p>
+            <p className='text-sm'>{props.readtime}</p>
           </div>
         </div>
         <div className='w-full mt-4'>
