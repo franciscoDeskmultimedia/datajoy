@@ -150,10 +150,9 @@ const Footer = () => {
               </button> */}
               <PrimaryButton
                 linkName="Optimize my revenue"
-                url="#"
+                url="/#"
                 buttonColor="Secondary"
                 textColor="black"
-                fullWidth
               />
             </form>
           </div>

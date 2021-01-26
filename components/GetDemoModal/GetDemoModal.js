@@ -176,7 +176,7 @@ const GetDemoModal = (props) => {
               </button> */}
             <PrimaryButton
               linkName="Optimize my revenue"
-              url="#"
+              url="/#"
               buttonColor="#0E4830"
               textColor="white"
               fullWidth
