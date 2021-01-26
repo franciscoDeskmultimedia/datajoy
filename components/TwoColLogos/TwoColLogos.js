@@ -10,7 +10,10 @@ const TwoColLogos = (props) => {
                 {props.logos.map((item,index)=>{
                     return(
                         <div key={index} className='flex flex-wrap items-center justify-center w-1/2 p-6 text-center'>
+                            {item.logoImage ?
                             <Image src={item.logoImage.mediaItemUrl} width={item.logoImage.mediaDetails.width / 2} height={item.logoImage.mediaDetails.height / 2}/>
+                             : null}
+                            {/* <Image src={item.logoImage.mediaItemUrl} width={item.logoImage.mediaDetails.width / 2} height={item.logoImage.mediaDetails.height / 2}/> */}
                         </div>
                     )
                     
