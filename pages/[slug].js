@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Navigation from "../components/Navigation/Navigation";
+import { NextSeo } from 'next-seo';
+
 
 import { getPageBuilder } from "../lib/api";
 import PageBuilder from "../components/PageBuilder/PageBuilder";
@@ -11,13 +13,13 @@ const PageBuilderContent = ({ page, draftData, previewDatas }) => {
   const pageBuilder = page.page != null ? page.page.pageBuilder.pageBuilder : "";
   const modified = page.status != 'publish' ? new Date()  : page.page.modified;
   const draft = draftData ? draftData.post.status : null ;
-
+  const pageSeo = page.page != null ? page.page.seo : '';
   return (
     <>
       <Head>
         <title>Datajoy</title>
         <link rel="icon" href="/datajoy-favicon.png" />
-
+        <meta name="keywords" content={pageSeo.metaKeywords} />
         {/* Poppins font */}
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -25,6 +27,11 @@ const PageBuilderContent = ({ page, draftData, previewDatas }) => {
           rel="stylesheet"
         />
       </Head>
+      <NextSeo 
+          title={pageSeo.title}
+          description={pageSeo.metaDesc}
+          canonical={pageSeo.canonical}
+         />
       <Navigation />
       {page.page != null ? (
         page.page.status == "publish" || draft  ? (
