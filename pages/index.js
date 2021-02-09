@@ -24,7 +24,7 @@ export default function Home({ page }) {
       <Head>
         <title>Datajoy</title>
         <link rel="icon" href="/datajoy-favicon.png" />
-
+        <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
         {/* Poppins font */}
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link

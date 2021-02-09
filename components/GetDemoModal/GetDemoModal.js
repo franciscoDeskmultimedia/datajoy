@@ -1,6 +1,6 @@
 import Image from "next/image";
 import PrimaryButton from "../Buttons/PrimaryButton";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import {useRouter} from 'next/router';
 import Link from 'next/link';
 
@@ -11,12 +11,39 @@ const GetDemoModal = (props) => {
   const [companySizeInput, setCompanySizeActive] = useState(false);
   const [companyCategoryInput, setCompanyCategoryActive] = useState(false);
   const router = useRouter();
+  
+  const [theName, setTheName] = useState('');
+
+  const settingName = (event)=>{
+    document.getElementById('first_name').value = event.target.value.split(' ')[0]
+    document.getElementById('last_name').value = event.target.value.split(' ').slice(1).join(' ')
+    setTheName(event.target.value)
+  }
+  useEffect(()=>{
+    if(document.getElementById("name").value != ''){
+      document.getElementById('first_name').value = document.getElementById('name').value.split(' ')[0]
+      if(document.getElementById('name').value.split(' ').length > 1){
+        document.getElementById('last_name').value = document.getElementById('name').value.split(' ').slice(1).join(' ')
+      }
+      // document.getElementById('last_name').value = document.getElementById('name').value.split(' ').slice(1).join(' ')
+      setNameActive(!nameInput);
+    }
+    if(document.getElementById("email").value != ''){
+      setEmailActive(!emailInput);
+    }
+    if(document.getElementById("company").value != ''){
+      setCompanyNameActive(!companyInput);
+    }
+    if(document.getElementById("employees").value != 'default'){
+      setCompanySizeActive(!companySizeInput);
+    }
+  },[])
 
   const toggleLabel = (el) => {
     const nameVal = document.getElementById("name").value;
     const emailVal = document.getElementById("email").value;
-    const companyNameVal = document.getElementById("companyName").value;
-    const companySizeVal = document.getElementById("companySize").value;
+    const companyNameVal = document.getElementById("company").value;
+    const companySizeVal = document.getElementById("employees").value;
     // const companyCategoryVal = document.getElementById("companyCategory").value;
 
     if (el == "name" && nameVal == "") {
@@ -68,7 +95,11 @@ const GetDemoModal = (props) => {
             We’re accepting closed beta customers. Sign up now to join the
             waitlist.
           </p>
-          <form className="">
+          <form className="" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+              <input type='hidden' name="oid" value="00D3t0000011QFg" className='hidden '/>
+              <input type='hidden' name="retURL" value="https://datajoy.vercel.app/" className='hidden' />
+              <input type='hidden' id="first_name"  name="first_name" size="20" type="text" defaultValue={theName.split(' ')[0]} className='hidden '/>
+              <input type='hidden' id="last_name"  name="last_name" size="20" type="text" defaultValue={theName.split(' ').slice(1).join(' ')} className='hidden ' />
             <div
               className={`relative inputName ${nameInput ? "active" : ""} mb-1`}
             >
@@ -78,8 +109,11 @@ const GetDemoModal = (props) => {
                 id="name"
                 type="text"
                 aria-label="Name"
+                defaultValue=''
                 onFocus={() => toggleLabel("name")}
                 onBlur={() => toggleLabel("name")}
+                onChange={() => settingName(event)}
+                autoComplete='nope'
                 // placeholder="Name"
               />
             </div>
@@ -97,6 +131,7 @@ const GetDemoModal = (props) => {
                 aria-label="email address"
                 onFocus={() => toggleLabel("email")}
                 onBlur={() => toggleLabel("email")}
+                autoComplete='nope'
                 //   placeholder="Email"
               />
             </div>
@@ -109,11 +144,12 @@ const GetDemoModal = (props) => {
               <label className="absolute top">Company Name</label>
               <input
                 className="w-full p-4 px-0 pb-2 text-2xl font-light text-black placeholder-black bg-white border-b border-black "
-                id="companyName"
+                id="company"
                 type="text"
                 aria-label="Company Name"
                 onFocus={() => toggleLabel("companyName")}
                 onBlur={() => toggleLabel("companyName")}
+                autoComplete='nope'
                 // placeholder="Company Name"
               />
             </div>
@@ -126,10 +162,11 @@ const GetDemoModal = (props) => {
               <label className="absolute top">Company Size</label>
               <select
                 className="w-full p-4 px-0 pb-2 text-2xl font-light text-black placeholder-black bg-white border-b border-black "
-                id="companySize"
-                aria-label="email address"
+                id="employees"
+                aria-label="Company Size"
                 onFocus={() => toggleLabel("companySize")}
                 onBlur={() => toggleLabel("companySize")}
+                autoComplete='nope'
                 // placeholder="Enter your email address"
               >
                 <option defaultValue value="default"></option>
@@ -174,13 +211,15 @@ const GetDemoModal = (props) => {
               >
                 Sign Up
               </button> */}
-            <PrimaryButton
+              <input className={`inline-block px-8 py-4 mt-4 text-xl font-light leading-tight text-center text-black rounded-full bg-djGreen transition duration-500 bg-whiteRock-500 hover:bg-whiteRock-600 lg:mt-0`} type="submit" name="Optimize my revenue" value='Optimize my revenue'></input>
+
+            {/* <PrimaryButton
               linkName="Optimize my revenue"
               url="/#"
               buttonColor="#0E4830"
               textColor="white"
               fullWidth
-            />
+            /> */}
           </form>
         </div>
 

@@ -136,7 +136,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         layout="responsive"
                       />
                       <div className="flex items-center pt-6 pb-3">
-                        <div className="capitalize rounded-full  pill pill-sand">
+                        <div className="capitalize rounded-full pill pill-sand">
                           <p className="text-sm">
                             {item.categories.nodes[0].name}
                           </p>
@@ -182,7 +182,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         layout="responsive"
                       />
                     <div className="flex items-center pt-6 pb-3">
-                      <div className="capitalize rounded-full  pill pill-sand">
+                      <div className="capitalize rounded-full pill pill-sand">
                         <p className="text-sm">
                           {item.categories.nodes[0].name}
                         </p>
@@ -242,7 +242,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         
                       />
                       <div className="flex items-center pt-6 pb-3">
-                        <div className="capitalize rounded-full  pill pill-sand">
+                        <div className="capitalize rounded-full pill pill-sand">
                           <p className="text-sm">
                             {item.categories.nodes[0].name}
                             {item.popularArticle.popularArticle}
@@ -291,7 +291,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         
                       />
                     <div className="flex items-center pt-6 pb-3">
-                      <div className="capitalize rounded-full  pill pill-sand">
+                      <div className="capitalize rounded-full pill pill-sand">
                         <p className="text-sm">
                           {item.categories.nodes[0].name}
                         </p>
@@ -356,6 +356,7 @@ export async function getStaticProps({params, preview = false, previewData}) {
       cat,
       draftData
     },
+    revalidate: 1,
   }
 }
 

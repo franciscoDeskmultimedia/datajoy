@@ -218,6 +218,7 @@ export async function getStaticProps(context) {
       sliderPosts,
       draftData,
     },
+    revalidate: 1,
     
   };
 }
