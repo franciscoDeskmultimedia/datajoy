@@ -36,7 +36,7 @@ export default async function preview(req, res) {
 
   // res.writeHead(307, { Location: `${ '/'+post.contentType.node.name + post.slug || post.databaseId }` })
 
-  res.writeHead(307, { Location: `${ post.contentType.node.name == 'page' ? '/'+post.slug || post.databaseId : '/blog/'+post.slug || post.databaseId }` })
+  res.writeHead(307, { Location: `${ post.contentType.node.name == 'page' ? '/'+(post.slug != null ? post.slug : post.databaseId) : '/blog/'+(post.slug ?  post.slug : post.databaseId )}` })
   res.end()
   
 }

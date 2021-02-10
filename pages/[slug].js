@@ -7,13 +7,14 @@ import { getPageBuilder } from "../lib/api";
 import PageBuilder from "../components/PageBuilder/PageBuilder";
 import Footer from "../components/Footer/Footer";
 
-const PageBuilderContent = ({ page, draftData, previewDatas }) => {
+const PageBuilderContent = ({ page, draftData, previewDatas, theparams }) => {
   // console.log('params : ' + page.status );
   // console.log('preview data : ' + previewDatas.post.slug + ' slug : ' + previewDatas.post.slug + ' post status: ' + previewDatas.post.status )
   const pageBuilder = page.page != null ? page.page.pageBuilder.pageBuilder : "";
   const modified = page.status != 'publish' ? new Date()  : page.page.modified;
   const draft = draftData ? draftData.post.status : null ;
   const pageSeo = page.page != null ? page.page.seo : '';
+
   return (
     <>
       <Head>
@@ -56,14 +57,16 @@ const PageBuilderContent = ({ page, draftData, previewDatas }) => {
 export default PageBuilderContent;
 
 export async function getServerSideProps({params, preview = false, previewData}) {
-  const page = await getPageBuilder(params.slug, preview, previewData);
+  const page = await getPageBuilder(params.slug , previewData ? true : false, previewData);
   const draftData = previewData ? previewData : null;
   const previewDatas = previewData ? previewData : null;
+  const theparams = params;
   return {
     props: {
       page,
       draftData,
-      previewDatas
+      previewDatas,
+      theparams
     },
   };
 }

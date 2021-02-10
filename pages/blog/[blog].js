@@ -15,7 +15,9 @@ const BlogPost = ({ post, sliderPosts, draftData }) => {
     (postFiltered) => postFiltered.popularArticle.popularArticle == true
   );
   // console.log('draft' + draftData)
+  const draft = draftData ? draftData.post.status : null ;
   const thePost = post.post;
+  
   const transformDate = (date) => {
     
     const d = new Date(date);
@@ -39,7 +41,7 @@ const BlogPost = ({ post, sliderPosts, draftData }) => {
         <link
           rel="stylesheet"
           type="text/css"
-          charset="UTF-8"
+          charSet="UTF-8"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
         />
         <link
@@ -49,6 +51,9 @@ const BlogPost = ({ post, sliderPosts, draftData }) => {
         />
       </Head>
       <Navigation />
+      {thePost != null ? (
+      thePost.status == "publish" || draft ? (
+      <>
       <div className="pt-20 ">
         <h1 className="hidden max-w-6xl px-4 lg:block sm:px-32">{thePost.title}</h1>
         <div className="px-4 mt-10 mb-12 sm:px-32">
@@ -184,7 +189,20 @@ const BlogPost = ({ post, sliderPosts, draftData }) => {
         <div className="px-4 pt-20 sm:px-32">
           <TitledSlider popularPost={popularPost}></TitledSlider>
         </div>
-      </div>
+      </div> </>
+      )
+      : (
+        <div className="flex flex-wrap items-center justify-center px-4 py-20 lg:px-32">
+          <h1 className="text-center">Page under construction</h1>
+        </div>
+      )
+      ) : (
+        <div className="flex flex-wrap items-center justify-center px-4 py-20 lg:px-32">
+          <h2 className="w-full text-center">Page doesnt exist</h2>
+          {/* <h1 className="w-full text-center">You might be looking for :</h1> */}
+        </div>
+      ) } 
+      
 
       <Footer></Footer>
     </>
@@ -192,42 +210,41 @@ const BlogPost = ({ post, sliderPosts, draftData }) => {
 };
 export default BlogPost;
 
-// export async function getServerSideProps(context) {
-//   const post = await getSinglePost(context.params.blog);
-//   const sliderPosts = await getAllPosts();
-//   const draftData = context.preview ? context.preview : null;
+export async function getServerSideProps({params, preview = false , previewData}) {
+  const post = await getSinglePost(params.blog, previewData ? true : false, previewData);
+  const sliderPosts = await getAllPosts();  
+  const draftData = previewData ? previewData : null;
 
-//   // const previewData = context.previewData;
-//   return {
-//     props: {
-//       post,
-//       sliderPosts,
-//       draftData,
-//       // previewData
-//     },
-//   };
-// }
-export async function getStaticProps(context) {
-  const post = await getSinglePost(context.params.blog);
-  const sliderPosts = await getAllPosts();
-  const draftData = context.preview ? context.preview : null;
-
+  // const previewData = context.previewData;
   return {
     props: {
       post,
       sliderPosts,
       draftData,
     },
-    revalidate: 1,
+  };
+}
+// export async function getStaticProps(context, preview , previewData) {
+//   const post = await getSinglePost(context.params.blog, previewData ? true : false, previewData);
+//   const sliderPosts = await getAllPosts();
+//   const draftData = context.params ? context.params : null;
+
+//   return {
+//     props: {
+//       post,
+//       sliderPosts,
+//       draftData,
+//     },
+//     revalidate: 1,
     
-  };
-}
+//   };
+// }
 
-export async function getStaticPaths() {
-  const allPosts = await getAllPostsWithSlug();
+// export async function getStaticPaths() {
+//   const allPosts = await getAllPostsWithSlug();
 
-  return {
-    paths: allPosts.edges.map(({ node }) => `/blog/${node.slug}`) || [],
-    fallback: false,
-  };
-}
+//   return {
+//     paths: allPosts.edges.map(({ node }) => `/blog/${node.slug}`) || [],
+//     fallback: false,
+//   };
+// }
