@@ -86,7 +86,7 @@ const BlogPost = ({ post, sliderPosts, draftData }) => {
         <div className="w-full px-0 border-t border-b border-black sm:px-32">
           <div className="entryImage">
             <Image
-            loading='eager'
+              loading='eager'
               src={
                 thePost.featuredImage
                   ? thePost.featuredImage.node.mediaItemUrl

@@ -14,6 +14,7 @@ const EyeBrowHero = (props) => {
         <Image
           className="mobileCoverImage"
           src={props.image}
+          alt={props.imageAlt}
           width={props.imageWidth}
           height={props.imageHeight}
           layout="responsive"

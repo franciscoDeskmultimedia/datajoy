@@ -91,7 +91,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
         </div>
       </div>
       <div className="relative order-1 w-full lg:order-none twoUpPostImage lg:w-1/2">
-        <Image className='object-cover' src={featuredPost[0].featuredImage.node.mediaItemUrl} layout="fill" />
+        <Image className='object-cover' src={featuredPost[0].featuredImage.node.mediaItemUrl} layout="fill" alt={featuredPost[0].featuredImage.node.altText != '' ? featuredPost[0].featuredImage.node.altText : featuredPost[0].featuredImage.node.title} />
       </div>
     </section>
       <section>
@@ -133,6 +133,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         src={item.thumbImage.thumbImage ? item.thumbImage.thumbImage.mediaItemUrl : item.featuredImage.node.mediaItemUrl }
                         width={item.thumbImage.thumbImage ? item.thumbImage.thumbImage.mediaDetails.width : item.featuredImage.node.mediaDetails.width}
                         height={item.thumbImage.thumbImage ? item.thumbImage.thumbImage.mediaDetails.height : item.featuredImage.node.mediaDetails.height}
+                        alt={item.thumbImage.thumbImage.altText != '' ? item.thumbImage.thumbImage.altText : item.thumbImage.thumbImage.title}
                         layout="responsive"
                       />
                       <div className="flex items-center pt-6 pb-3">
@@ -179,6 +180,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         src={item.thumbImage.thumbImage ? item.thumbImage.thumbImage.mediaItemUrl : item.featuredImage.node.mediaItemUrl }
                         width={item.thumbImage.thumbImage ? item.thumbImage.thumbImage.mediaDetails.width : item.featuredImage.node.mediaDetails.width}
                         height={item.thumbImage.thumbImage ? item.thumbImage.thumbImage.mediaDetails.height : item.featuredImage.node.mediaDetails.height}
+                        alt={item.thumbImage.thumbImage.altText != '' ? item.thumbImage.thumbImage.altText : item.thumbImage.thumbImage.title}
                         layout="responsive"
                       />
                     <div className="flex items-center pt-6 pb-3">
@@ -238,6 +240,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         src={item.thumbImage.thumbImage != null ? item.thumbImage.thumbImage.mediaItemUrl : item.featuredImage.node.mediaItemUrl}
                         width={item.thumbImage.thumbImage != null ? item.thumbImage.thumbImage.mediaDetails.width : item.featuredImage.node.mediaDetails.width}
                         height={item.thumbImage.thumbImage != null ? item.thumbImage.thumbImage.mediaDetails.height : item.featuredImage.node.mediaDetails.height}
+                        alt={item.thumbImage.thumbImage.altText != '' ? item.thumbImage.thumbImage.altText : item.thumbImage.thumbImage.title}
                         layout="responsive"
                         
                       />
@@ -287,6 +290,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
                         src={item.thumbImage.thumbImage != null ? item.thumbImage.thumbImage.mediaItemUrl : item.featuredImage.node.mediaItemUrl}
                         width={item.thumbImage.thumbImage != null ? item.thumbImage.thumbImage.mediaDetails.width : item.featuredImage.node.mediaDetails.width}
                         height={item.thumbImage.thumbImage != null ? item.thumbImage.thumbImage.mediaDetails.height : item.featuredImage.node.mediaDetails.height}
+                        alt={item.thumbImage.thumbImage.altText != '' ? item.thumbImage.thumbImage.altText : item.thumbImage.thumbImage.title}
                         layout="responsive"
                         
                       />

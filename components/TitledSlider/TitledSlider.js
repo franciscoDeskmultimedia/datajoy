@@ -65,6 +65,7 @@ const TitledSlider = (props) => {
       <div className="w-full outline-none sm:pr-2 ">
         <div className="relative slider-one">
           <Image
+            alt={popPost[0].featuredImage.node.altText != '' ? popPost[0].featuredImage.node.altText : popPost[0].featuredImage.node.title  }
             className="object-cover "
             src={popPost[0].featuredImage.node.mediaItemUrl}
             layout="fill"
@@ -92,13 +93,14 @@ const TitledSlider = (props) => {
       <div className="w-full outline-none sm:pr-1 sm:pl-1 ">
         <div className="relative slider-two ">
           <Image
+            alt={props.imageAlt}
             className="object-cover"
             src={popPost[1].featuredImage.node.mediaItemUrl}
             layout="fill"
           />
         </div>
         <div className="flex items-center pt-8 pb-3">
-          <div className="capitalize rounded-full  pill pill-sand">
+          <div className="capitalize rounded-full pill pill-sand">
             <p className="text-sm">{popPost[1].categories.nodes[0].name}</p>
           </div>
           <div>
@@ -119,6 +121,7 @@ const TitledSlider = (props) => {
       <div className="w-full outline-none sm:pl-2 ">
         <div className="relative slider-three ">
           <Image
+            alt={props.imageAlt}
             className="object-cover"
             src={popPost[2].featuredImage.node.mediaItemUrl}
             layout="fill"

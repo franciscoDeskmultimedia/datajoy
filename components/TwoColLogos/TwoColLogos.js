@@ -11,7 +11,7 @@ const TwoColLogos = (props) => {
                     return(
                         <div key={index} className='flex flex-wrap items-center justify-center w-1/2 p-6 text-center'>
                             {item.logoImage ?
-                            <Image src={item.logoImage.mediaItemUrl} width={item.logoImage.mediaDetails.width / 2} height={item.logoImage.mediaDetails.height / 2}/>
+                            <Image alt={item.logoImage.altText != '' ? item.logoImage.altText : item.logoImage.title} src={item.logoImage.mediaItemUrl} width={item.logoImage.mediaDetails.width / 2} height={item.logoImage.mediaDetails.height / 2}/>
                              : null}
                             {/* <Image src={item.logoImage.mediaItemUrl} width={item.logoImage.mediaDetails.width / 2} height={item.logoImage.mediaDetails.height / 2}/> */}
                         </div>

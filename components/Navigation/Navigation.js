@@ -43,18 +43,21 @@ const Navigation = () => {
               src="/datajoy_logo_POS.svg"
               width="111"
               height="32"
+              alt='Logo Datajoy'
             ></img>
             <img
               className="cursor-pointer lg:hidden "
               src={active ? "/datajoy_logo_REV.svg" : "/datajoy_logo_POS.svg"}
               width="111"
               height="32"
+              alt='Logo Datajoy'
             ></img>
           </div>
         </Link>
       </div>
       <div className="block lg:hidden">
         <button
+          aria-label='menu'
           onClick={() => toggleNav()}
           className="flex items-center px-3 py-2"
         >

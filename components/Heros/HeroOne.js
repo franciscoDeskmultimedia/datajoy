@@ -8,6 +8,7 @@ const HeroOne = (props) => {
           className="w-full "
           layout="responsive"
           src={props.imageSrc}
+          alt={props.imageAlt}
           width={props.imageWidth}
           height={props.imageHeight}
         />

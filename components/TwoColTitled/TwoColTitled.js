@@ -12,6 +12,7 @@ const TwoColTitled = (props) => {
           <Image
             layout="intrinsic"
             src={props.iconSrc}
+            alt={props.iconAlt}
             width={props.iconWidth / 2}
             height={props.iconHeight / 2}
           />
@@ -56,6 +57,7 @@ const TwoColTitled = (props) => {
             <Image
               layout="responsive"
               src={props.imageSrc}
+              alt={props.imageAlt}
               width={props.imageWidth}
               height={props.imageHeight}
             />

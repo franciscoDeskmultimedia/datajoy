@@ -11,7 +11,7 @@ const TwoColImage = (props) => {
     >
       {props.fullImage == true ? (
         <div className="relative flex items-center justify-center w-full p-16 border-b border-black lg:border-t-0 lg:border-b-0 fullImage bg-lightblue-500 lg:h-56 lg:w-1/2">
-          <Image layout="fill" src={props.imageSrc} />
+          <Image layout="fill" src={props.imageSrc} alt={props.imageAlt} />
         </div>
       ) : (
         <div
@@ -21,6 +21,7 @@ const TwoColImage = (props) => {
           <Image
             layout="intrinsic"
             src={props.imageSrc}
+            alt={props.imageAlt}
             width={props.imageWidth}
             height={props.imageHeight}
           />

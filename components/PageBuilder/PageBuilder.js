@@ -27,6 +27,7 @@ const PageBuilder = (props) => {
                     imageSrc={section.image.mediaItemUrl}
                     imageWidth={section.image.mediaDetails.width}
                     imageHeight={section.image.mediaDetails.height}
+                    imageAlt={section.image.altText != '' ? section.image.altText : section.image.title}
                     copy={section.copy}
                   />
                   
@@ -44,9 +45,11 @@ const PageBuilder = (props) => {
                     title={section.title}
                     copy={section.textContainer.copy}
                     iconSrc={section.icon ? section.icon.mediaItemUrl : null}
+                    iconAlt={section.icon ? (section.icon.altText ? section.icon.altText : section.icon.title) : null}
                     iconWidth={section.icon ? section.icon.mediaDetails.width : null}
                     iconHeight={section.icon ? section.icon.mediaDetails.height : null}
                     imageSrc={section.imageContainer.image.mediaItemUrl}
+                    imageAlt={section.imageContainer.image.altText != '' ? section.imageContainer.image.altText : section.imageContainer.image.title}
                     imageWidth={section.imageContainer.image.mediaDetails.width}
                     imageHeight={section.imageContainer.image.mediaDetails.height}
                     ctaName={section.textContainer.cta ? section.textContainer.cta[0].cta.title : null }
@@ -70,6 +73,7 @@ const PageBuilder = (props) => {
                     fullImage={section.imageCol.fullImage}
                     bottomImage = {section.imageCol.bottomImage}
                     imageSrc={section.imageCol.image.mediaItemUrl}
+                    imageAlt={section.imageCol.image.altText != '' ? section.imageCol.image.altText : section.imageCol.image.title}
                     imageWidth={section.imageCol.image.mediaDetails.width}
                     imageHeight={section.imageCol.image.mediaDetails.height}
                     backgroundColor={section.imageCol.backgroundColor}
@@ -92,6 +96,7 @@ const PageBuilder = (props) => {
                     eyebrow={section.eyebrow}
                     title={section.title}
                     image={section.image.mediaItemUrl}
+                    imageAlt={section.image.altText != '' ? section.image.altText : section.image.title}
                     imageWidth={section.image.mediaDetails.width}
                     imageHeight={section.image.mediaDetails.height}
                   />
@@ -105,6 +110,7 @@ const PageBuilder = (props) => {
                   
                   <FullImage
                     image={section.image.mediaItemUrl}
+                    imageAlt={section.image.altText != '' ? section.image.altText : section.image.title}
                   />
                  
                 ) : (
@@ -134,6 +140,7 @@ const PageBuilder = (props) => {
                   <TwoColPost
                     category={section.post.categories.nodes[0].name}
                     image={section.post.featuredImage.node.mediaItemUrl}
+                    imageAlt={section.post.featuredImage.node.altText != '' ? section.post.featuredImage.node.altText : section.post.featuredImage.node.title}
                     title={section.post.title}
                     date={section.post.date}
                     author={section.post.author.node.firstName + ' ' + section.post.author.node.lastName}
@@ -174,6 +181,7 @@ const PageBuilder = (props) => {
                     subtitle={section.subtitle}
                     fullImage={section.fullImage}
                     imageSrc={section.image.mediaItemUrl}
+                    imageAlt={section.image.altText != '' ? section.image.altText : section.image.title}
                     imageWidth={section.image.mediaDetails.width}
                     imageHeight={section.image.mediaDetails.height}
                   />

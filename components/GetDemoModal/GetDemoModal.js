@@ -87,7 +87,7 @@ const GetDemoModal = (props) => {
               className="cursor-pointer "
               onClick={() => router.push('/')}
             >
-              <Image src="/datajoy-logo.png" width="111" height="32" />
+              <Image src="/datajoy-logo.png" alt={props.imageAlt} width="111" height="32" />
             </a>
           </div>
           <h3 className="mb-2">Can we help you grow?</h3>

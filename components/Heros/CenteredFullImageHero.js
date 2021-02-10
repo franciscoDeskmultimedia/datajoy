@@ -22,12 +22,14 @@ const CenteredFullImageHero = (props) => {
                 className={``}
                 layout={`responsive`}
                 src={props.imageSrc}
+                alt={props.imageAlt}
                 width={props.imageWidth}
                 height={props.imageHeight}
               />
             ) : (
               <Image
                 className={`object-cover`}
+                alt={props.imageAlt}
                 layout={`fill`}
                 src={props.imageSrc}
                 // width={props.imageWidth}

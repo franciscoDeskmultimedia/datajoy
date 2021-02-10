@@ -198,6 +198,7 @@ const Footer = () => {
       <div className="flex items-center justify-between w-full py-10 border-t border-white">
         <div className="pl-10 sm:pl-32">
           <Image
+            alt='Datajoy Logo'
             src="/datajoy_logo_REV.svg"
             width="111"
             height="32"

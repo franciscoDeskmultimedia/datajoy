@@ -31,7 +31,7 @@ const TwoUpPost = (props) => {
         </div>
       </div>
       <div className="relative order-1 w-full lg:order-none twoUpPostImage lg:w-1/2">
-        <Image className='object-cover' src={props.image} layout="fill" />
+        <Image className='object-cover' src={props.image} layout="fill" alt={props.imageAlt} />
       </div>
     </section>
   );
