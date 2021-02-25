@@ -178,6 +178,7 @@ const PageBuilder = (props) => {
                   
                   <CenteredFullImageHero
                     title={section.title}
+                    titleSecondline={section.titleSecondLine}
                     subtitle={section.subtitle}
                     fullImage={section.fullImage}
                     imageSrc={section.image.mediaItemUrl}

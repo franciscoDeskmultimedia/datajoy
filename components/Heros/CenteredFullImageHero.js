@@ -2,12 +2,20 @@ import Image from 'next/image';
 const CenteredFullImageHero = (props) => {
     return (
       <section className="pt-10 pb-24 text-center lg:pb-32 centeredFullImageHero">
-        <h1 className="max-w-5xl px-4 m-auto mb-2 font-normal text-left lg:text-center lg:px-32">
+        <h1 className={`max-w-8xl px-4 m-auto ${ props.titleSecondline ? ' mb-0' : 'mb-2' } font-normal text-left lg:text-center lg:px-32`}>
           {props.title}
         </h1>
 
+        {props.titleSecondline ? (
+          <h1 className="px-4 m-auto mb-2 font-normal text-left max-w-8xl lg:text-center lg:px-32">
+            {props.titleSecondline}
+          </h1>
+        ) : (
+          null
+        )}
+
         {props.subtitle ? (
-          <h2 className="w-full px-4 mt-5 mb-16 text-2xl font-normal text-left lg:text-center lg:px-64">
+          <h2 className="w-full px-4 mt-5 mb-16 text-4xl font-normal text-left lg:text-center lg:px-64">
             {props.subtitle}
           </h2>
         ) : null}
@@ -16,7 +24,11 @@ const CenteredFullImageHero = (props) => {
             props.fullImage == true ? "" : "lg:px-32 px-4"
           }`}
         >
-          <div className={`relative w-full ${props.fullImage == true ? '' : 'centeredImage'}`} >
+          <div
+            className={`relative w-full ${
+              props.fullImage == true ? "" : "centeredImage"
+            }`}
+          >
             {props.fullImage == true ? (
               <Image
                 className={``}

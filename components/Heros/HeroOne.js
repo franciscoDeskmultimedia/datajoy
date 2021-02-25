@@ -13,7 +13,7 @@ const HeroOne = (props) => {
           height={props.imageHeight}
         />
         
-          {props.subtitle ? <h2 className="w-2/3 max-w-screen-sm mt-5 font-normal">props.subtitle</h2> : null}
+          {props.subtitle ? <h2 className="w-2/3 max-w-screen-sm mt-5 font-normal">{props.subtitle}</h2> : null}
         
         <div className='flex justify-end mt-10 lg:mt-16' >
           <div className='w-full lg:w-2/5' dangerouslySetInnerHTML={{ __html: props.copy}}></div>
