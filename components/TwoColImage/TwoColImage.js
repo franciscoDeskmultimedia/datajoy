@@ -10,7 +10,7 @@ const TwoColImage = (props) => {
       }`}
     >
       {props.fullImage == true ? (
-        <div className="relative flex items-center justify-center w-full p-16 border-b border-black lg:border-t-0 lg:border-b-0 fullImage bg-lightblue-500 lg:h-56 lg:w-1/2">
+        <div className="relative flex items-center justify-center w-full p-16 border-b border-black lg:border-t-0 lg:border-b-0 fullImage bg-lightblue-500 lg:w-1/2">
           <Image layout="fill" src={props.imageSrc} alt={props.imageAlt} />
         </div>
       ) : (
@@ -33,7 +33,7 @@ const TwoColImage = (props) => {
           {props.subtitle ? <div className='hidden subtitle-desk lg:block'>{props.subtitle}</div> : null}
       {props.mobileSubtitle ? <div className='subtitle-desk lg:hidden'>{props.mobileSubtitle}</div> : null}
           <div className='subtitle-mobile'></div>
-          <p className="mt-4">{props.text}</p>
+          <div className="mt-4" dangerouslySetInnerHTML={{ __html: props.copy }}></div>
         </div>
         <div className='self-end w-full'>
           {props.ctaUrl 

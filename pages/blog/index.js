@@ -94,8 +94,9 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
         <Image className='object-cover' src={featuredPost[0].featuredImage.node.mediaItemUrl} layout="fill" alt={featuredPost[0].featuredImage.node.altText != '' ? featuredPost[0].featuredImage.node.altText : featuredPost[0].featuredImage.node.title} />
       </div>
     </section>
+
       <section>
-        <div className="flex flex-row-reverse justify-center w-full py-12 border-b border-black">
+        {/* <div className="flex flex-row-reverse justify-center w-full py-12 border-b border-black">
           {allCategories.map((item, index) => (
             <p
               className={`cursor-pointer px-3 ${
@@ -113,10 +114,9 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
               {item.name == "Uncategorized" ? "All Categories" : item.name}
             </p>
           ))}
-        </div>
+        </div> */}
 
-        <div className={`${allPosts.length < 1 ? 'hidden' : '' } flex flex-wrap w-full px-4 mt-20 mb-20 post-1-row sm:px-32`} >
-          {/* <p>{console.log(allPosts)}</p> */}
+        {/* <div className={`${allPosts.length < 1 ? 'hidden' : '' } flex flex-wrap w-full px-4 mt-20 mb-20 post-1-row sm:px-32`} >
           {allPosts.map((item, index) => {
             if (chooseCat == "Uncategorized") {
               if (index <= 1 && item.popularArticle.popularArticle != true ) {
@@ -210,9 +210,11 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
               );
             }
           })}
-        </div>
+        </div> */}
 
-        <div className="pb-40 overflow-hidden text-white slider articles bg-djGreen-500 ">
+        
+          {/* {popularPost ?
+          <div className="pb-40 overflow-hidden text-white slider articles bg-djGreen-500 ">
           <div className="flex items-end justify-between px-4 py-8 border-b border-white sm:px-32">
             <h2 className='leading-none'>Popular articles </h2>
             <p className='text-right'>Get the latest on tech, business and entrepreneurship</p>
@@ -222,8 +224,10 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
           </div>
           
         </div>
+        : null} */}
+        
 
-        <div className={`${allPosts.length < 3 ? 'hidden' : '' } flex flex-wrap w-full px-4 mt-20 mb-20 post-1-row sm:px-32`}>
+        {/* <div className={`${allPosts.length < 3 ? 'hidden' : '' } flex flex-wrap w-full px-4 mt-20 mb-20 post-1-row sm:px-32`}>
           {allPosts.map((item, index) => {
             if (chooseCat == "Uncategorized" && item.popularArticle.popularArticle != true && item.popularArticle.popularArticle != true ) {
               if (index >= 2) {
@@ -276,7 +280,6 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
               item.categories.nodes[0].name == chooseCat
               && item.popularArticle.popularArticle != true
             ) {
-              // console.log(item.popularArticle.popularArticle)
               return (
                 <AnimatePresence key={item.id} exitBeforeEnter={true}>
                   <motion.div
@@ -321,7 +324,7 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
               );
             }
           })}
-        </div>
+        </div> */}
       </section>
       <Footer></Footer>
     </>

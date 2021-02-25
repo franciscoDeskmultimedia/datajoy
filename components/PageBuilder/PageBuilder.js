@@ -70,6 +70,7 @@ const PageBuilder = (props) => {
                     subtitle={section.textContainer.subtitle}
                     mobileSubtitle={section.textContainer.mobileSubtitle}
                     text={section.textContainer.copy}
+                    copy={section.textContainer.copynew}
                     fullImage={section.imageCol.fullImage}
                     bottomImage = {section.imageCol.bottomImage}
                     imageSrc={section.imageCol.image.mediaItemUrl}

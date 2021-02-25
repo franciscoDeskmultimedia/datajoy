@@ -181,15 +181,15 @@ const BlogPost = ({ post, sliderPosts, draftData }) => {
           }}
         ></div>
       </div>
-      <div className="pb-40 text-white slider articles bg-djGreen-500">
+      {/* <div className="pb-40 text-white slider articles bg-djGreen-500">
         <div className="flex items-end justify-between px-4 py-8 border-b border-white sm:px-32">
           <h2 className="leading-none">Related articles </h2>
-          {/* <p className='text-right'>Get the latest on tech, business and entrepreneurship</p> */}
         </div>
         <div className="px-4 pt-20 sm:px-32">
           <TitledSlider popularPost={popularPost}></TitledSlider>
         </div>
-      </div> </>
+      </div>  */}
+      </>
       )
       : (
         <div className="flex flex-wrap items-center justify-center px-4 py-20 lg:px-32">
