@@ -64,6 +64,16 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-187967999-1"></script>
+        <script dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+    
+              gtag('config', 'UA-187967999-1');`
+            }}>
+          
+        </script>
       </Head>
       <Navigation />
       {/* {page.page.status == "publish" || draftData == true ? (

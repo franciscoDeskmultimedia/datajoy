@@ -73,6 +73,9 @@ p {
     letter-spacing: -0.01em;
   }
 }
+.twocolimage .fullImage img[alt='IMG_jon-lee_desktop'] {
+  object-position: top;
+}
 .eyebrow {
   @apply text-xl;
   min-width: 120px;
