@@ -97,7 +97,7 @@ const GetDemoModal = (props) => {
           </p>
           <form className="" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
               <input type='hidden' name="oid" value="00D3t0000011QFg" className='hidden '/>
-              <input type='hidden' name="retURL" value="https://datajoy.vercel.app/" className='hidden' />
+              <input type='hidden' name="retURL" value="https://datajoy.com/" className='hidden' />
               <input type='hidden' id="first_name"  name="first_name" size="20" type="text" defaultValue={theName.split(' ')[0]} className='hidden '/>
               <input type='hidden' id="last_name"  name="last_name" size="20" type="text" defaultValue={theName.split(' ').slice(1).join(' ')} className='hidden ' />
             <div
@@ -128,10 +128,12 @@ const GetDemoModal = (props) => {
                 className="w-full p-4 px-0 pb-2 text-2xl font-light text-black placeholder-black bg-white border-b border-black "
                 id="email"
                 type="email"
+                name="email"
                 aria-label="email address"
                 onFocus={() => toggleLabel("email")}
                 onBlur={() => toggleLabel("email")}
                 autoComplete='nope'
+                required
                 //   placeholder="Email"
               />
             </div>
@@ -146,6 +148,7 @@ const GetDemoModal = (props) => {
                 className="w-full p-4 px-0 pb-2 text-2xl font-light text-black placeholder-black bg-white border-b border-black "
                 id="company"
                 type="text"
+                name="company"
                 aria-label="Company Name"
                 onFocus={() => toggleLabel("companyName")}
                 onBlur={() => toggleLabel("companyName")}
@@ -163,6 +166,7 @@ const GetDemoModal = (props) => {
               <select
                 className="w-full p-4 px-0 pb-2 text-2xl font-light text-black placeholder-black bg-white border-b border-black "
                 id="employees"
+                name="employees"
                 aria-label="Company Size"
                 onFocus={() => toggleLabel("companySize")}
                 onBlur={() => toggleLabel("companySize")}
