@@ -248,6 +248,13 @@ input,select{
   appearance: none;
   border-radius: 0px;
 }
+.noScrollbar::-webkit-scrollbar{
+  display: none;
+}
+.noScrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 input:focus,
 select:focus {
   outline: none;

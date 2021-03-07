@@ -81,7 +81,7 @@ const GetDemoModal = (props) => {
         </a>
       </div> */}
       <div className="flex flex-wrap items-center w-full h-full">
-        <div className="w-full h-full px-4 py-6 overflow-y-scroll bg-white md:w-1/2 lg:px-20 xl:px-32 lg:py-20 lg:w-1/2">
+        <div className="w-full h-full px-4 py-6 overflow-y-scroll bg-white noScrollbar md:w-1/2 lg:px-20 xl:px-32 lg:py-20 lg:w-1/2">
           <div className="mb-10">
             <a
               className="cursor-pointer "
