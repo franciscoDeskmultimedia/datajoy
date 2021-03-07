@@ -63,7 +63,7 @@ const GetDemoModal = (props) => {
     }
   };
   return (
-    <section className="fixed top-0 left-0 z-50 flex items-center w-full h-full bg-white getBeta-overlay ">
+    <section className="fixed top-0 left-0 z-50 flex items-center w-full h-full min-h-full bg-white getBeta-overlay ">
       {/* <div className="absolute modalClose">
         <a className="cursor-pointer " onClick={() => router.back()}>
           <svg
@@ -80,8 +80,8 @@ const GetDemoModal = (props) => {
           </svg>
         </a>
       </div> */}
-      <div className="flex flex-wrap items-center h-full">
-        <div className="h-full px-4 py-6 bg-white lg:px-32 lg:py-20 lg:w-1/2">
+      <div className="flex flex-wrap items-center w-full h-full">
+        <div className="w-full h-full px-4 py-6 overflow-y-scroll bg-white md:w-1/2 lg:px-20 xl:px-32 lg:py-20 lg:w-1/2">
           <div className="mb-10">
             <a
               className="cursor-pointer "
@@ -95,7 +95,7 @@ const GetDemoModal = (props) => {
             We’re accepting closed beta customers. Sign up now to join the
             waitlist.
           </p>
-          <form className="" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+          <form className="pb-10" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
               <input type='hidden' name="oid" value="00D3t0000011QFg" className='hidden '/>
               <input type='hidden' name="retURL" value="https://datajoy.com/" className='hidden' />
               <input type='hidden' id="first_name"  name="first_name" size="20" type="text" defaultValue={theName.split(' ')[0]} className='hidden '/>
@@ -227,9 +227,9 @@ const GetDemoModal = (props) => {
           </form>
         </div>
 
-        <div className="items-center hidden h-full lg:flex quoteContainer lg:w-1/2 bg-whiteRock-500">
+        <div className="fixed top-0 right-0 items-center hidden h-full md:flex md:w-1/2 lg:flex quoteContainer lg:w-1/2 bg-whiteRock-500">
           <div className="flex flex-wrap items-center lg:px-20 lg:py-20 ">
-            <p className="w-full mb-6 text-5xl text-center">
+            <p className="w-full mb-6 text-5xl text-center md:text-4xl lg:text-4xl xl:text-5xl">
               “The waterfall makes it easy to use, love the Google integration
               and that any person in the org can get up and running with minimal
               IT.”
