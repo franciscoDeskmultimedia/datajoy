@@ -1,16 +1,11 @@
-import styles from "../styles/Home.module.css";
+// import styles from "../styles/Home.module.css";
 
 import Head from "next/head";
 import Navigation from "../components/Navigation/Navigation";
 import { NextSeo } from 'next-seo';
 
-// import HeroOne from "../components/Heros/HeroOne";
-// import TwoColTitled from "../components/TwoColTitled/TwoColTitled";
-// import TwoColImage from "../components/TwoColImage/TwoColImage"
-// import EyeBrowHero from "../components/Heros/EyeBrowHero";
 import { getPageBuilder } from "../lib/api";
 import PageBuilder from "../components/PageBuilder/PageBuilder";
-import GetDemoModal from '../components/GetDemoModal/GetDemoModal'
 import Footer from "../components/Footer/Footer";
 
 
@@ -49,29 +44,15 @@ export default function Home({ page }) {
          />
       <Navigation />
       <PageBuilder page={pageBuilder} modified={modified}/>
-      
-      {/* <GetDemoModal/> */}
+
       <Footer />
     </>
   );
 }
 
-// export async function getServerSideProps({params, preview = false, previewData}) {
-//   const page = await getPageBuilder('home', preview, previewData);
-//   const draftData = previewData ? previewData : null;
-//   // const previewData = context.previewData;
-//   return {
-//     props: {
-//       page,
-//       draftData,
-//       // previewData
-//     },
-//   };
-// }
-
 export async function getStaticProps(context) {
+  
   const page = await getPageBuilder('home', context.preview = false , context.previewData);
-  // const draftData = context.previewData ? context.previewData.slug : null ;
 
   return {
     props: {

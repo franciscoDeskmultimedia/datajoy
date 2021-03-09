@@ -9,12 +9,10 @@ import Footer from "../../components/Footer/Footer";
 import { AnimatePresence, motion } from "framer-motion";
 
 const BlogPost = ({ post, sliderPosts, draftData }) => {
-  // const baseUrl = process.env.BASE_URL;
   const baseUrl = 'https://datajoy.vercel.app'
   let popularPost = sliderPosts.posts.nodes.filter(
     (postFiltered) => postFiltered.popularArticle.popularArticle == true
   );
-  // console.log('draft' + draftData)
   const draft = draftData ? draftData.post.status : null ;
   const thePost = post.post;
   
@@ -225,7 +223,6 @@ export async function getServerSideProps({params, preview = false , previewData}
   const sliderPosts = await getAllPosts();  
   const draftData = previewData ? previewData : null;
 
-  // const previewData = context.previewData;
   return {
     props: {
       post,
@@ -234,6 +231,7 @@ export async function getServerSideProps({params, preview = false , previewData}
     },
   };
 }
+
 // export async function getStaticProps(context, preview , previewData) {
 //   const post = await getSinglePost(context.params.blog, previewData ? true : false, previewData);
 //   const sliderPosts = await getAllPosts();

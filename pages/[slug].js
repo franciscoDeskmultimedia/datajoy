@@ -8,8 +8,6 @@ import PageBuilder from "../components/PageBuilder/PageBuilder";
 import Footer from "../components/Footer/Footer";
 
 const PageBuilderContent = ({ page, draftData, previewDatas, theparams }) => {
-  // console.log('params : ' + page.status );
-  // console.log('preview data : ' + previewDatas.post.slug + ' slug : ' + previewDatas.post.slug + ' post status: ' + previewDatas.post.status )
   const pageBuilder = page.page != null ? page.page.pageBuilder.pageBuilder : "";
   const modified = page.status != 'publish' ? new Date()  : page.page.modified;
   const draft = draftData ? draftData.post.status : null ;
@@ -55,7 +53,6 @@ const PageBuilderContent = ({ page, draftData, previewDatas, theparams }) => {
       ) : (
         <div className="flex flex-wrap items-center justify-center px-4 py-20 lg:px-32">
           <h2 className="w-full text-center">Page doesnt exist</h2>
-          {/* <h1 className="w-full text-center">You might be looking for :</h1> */}
         </div>
       )}
 
@@ -80,23 +77,5 @@ export async function getServerSideProps({params, preview = false, previewData})
     },
   };
 }
-// export async function getStaticProps(context) {
-//   const page = await getPageBuilder(context.params.slug);
-//   const draftData = context.preview ? context.preview : null ;
 
-//   return {
-//     props: {
-//       page,
-//       draftData,
-//     },
-//   }
-// }
 
-// export async function getStaticPaths() {
-//   const allPosts = await getAllPagesWithSlug()
-
-//   return {
-//     paths: allPosts.edges.map(({ node }) => `/${node.slug}`) || [],
-//     fallback: false,
-//   }
-// }

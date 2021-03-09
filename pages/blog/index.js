@@ -22,7 +22,6 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
   let featuredPost = posts.posts.nodes.filter(
     (postFiltered) => postFiltered.featuredArticle.featuredArticle == true
   );
-  // console.log('los posts : ' + popularPost.length);
   let allPosts = {};
   if (chooseCat != "Uncategorized") {
     allPosts = posts.posts.nodes.filter(
@@ -105,6 +104,8 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
       </div>
     </section>
 
+      {/* Commented until blog entries are populated
+      the slider need at least 3 featured post  */}
       <section>
         {/* <div className="flex flex-row-reverse justify-center w-full py-12 border-b border-black">
           {allCategories.map((item, index) => (
@@ -342,6 +343,9 @@ const Blog = ({ page, posts, cat, draftData, previewData }) => {
 };
 
 export default Blog;
+
+
+// if needed to change to ServerSideprops
 
 // export async function getServerSideProps(context) {
 //   const page = await getPageBuilder("blog");
